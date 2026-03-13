@@ -3,17 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>スマート片付け | 家中の片付けを、見える化して続けるアプリ</title>
-        <meta name="description" content="スマート片付けは、片付けタスク、収納メモ、作業写真、家族との共有をひとつにまとめる片付け管理アプリです。散らかる前に整える仕組みをつくり、毎日の片付けを無理なく続けられます。">
-        <meta name="keywords" content="スマート片付け, 片付けアプリ, 整理整頓, 収納管理, 家事共有, タスク管理, 片付け習慣, 断捨離">
+        <title>スマート片付け | 撮るだけで登録、迷わずしまえて見つかる片付けアプリ</title>
+        <meta name="description" content="スマート片付けは、画像解析による自動登録、収納場所レコメンド、あいまい検索、収納情報の最新化を備えた片付けアプリです。登録の面倒、どこにしまうか迷う悩み、検索で見つからない不便、古い収納情報から解放します。">
+        <meta name="keywords" content="スマート片付け, 片付けアプリ, 画像解析, 収納場所レコメンド, あいまい検索, 収納管理, 整理整頓, 在庫管理">
         <meta property="og:site_name" content="スマート片付け">
-        <meta property="og:title" content="スマート片付け | 家中の片付けを、見える化して続けるアプリ">
-        <meta property="og:description" content="片付けタスク、収納メモ、写真、家族共有をひとつに。スマート片付けで、散らからない暮らしを仕組み化。">
+        <meta property="og:title" content="スマート片付け | 撮るだけで登録、迷わずしまえて見つかる片付けアプリ">
+        <meta property="og:description" content="画像解析による自動登録、収納場所レコメンド、あいまい検索、収納情報の最新化で片付けを仕組み化。">
         <meta property="og:type" content="website">
         <meta property="og:image" content="/icon.png">
         <meta name="twitter:card" content="summary">
-        <meta name="twitter:title" content="スマート片付け | 家中の片付けを、見える化して続けるアプリ">
-        <meta name="twitter:description" content="やること、置き場所、進み具合をひとつにまとめる片付け管理アプリ。">
+        <meta name="twitter:title" content="スマート片付け | 撮るだけで登録、迷わずしまえて見つかる片付けアプリ">
+        <meta name="twitter:description" content="画像解析、自動登録、収納提案、あいまい検索、最新化をひとつに。">
         <meta name="twitter:image" content="/icon.png">
         <link rel="icon" type="image/svg+xml" href="icon.svg">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -199,7 +199,7 @@
 
         .hero-points {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 14px;
             margin-top: 34px;
         }
@@ -422,7 +422,7 @@
         }
 
         .problem-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .feature-grid {
@@ -430,7 +430,7 @@
         }
 
         .flow-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(4, minmax(0, 1fr));
         }
 
         .voice-grid {
@@ -618,6 +618,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .hero-points {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .section-head,
             .footer-inner {
                 flex-direction: column;
@@ -684,31 +688,35 @@
             <section class="hero">
                 <div class="container hero-grid">
                     <div class="reveal active">
-                        <span class="eyebrow">家族で続ける片付け管理アプリ</span>
+                        <span class="eyebrow">画像解析とAIで片付けを軽くするアプリ</span>
                         <h1>
-                            散らかる前に。
+                            撮るだけで。
                             <br>
-                            迷う前に。
+                            迷わずしまえて。
                             <br>
-                            <span class="accent">片付く仕組みを。</span>
+                            <span class="accent">あとから見つかる。</span>
                         </h1>
-                        <p>スマート片付けは、家の中のやること、収納場所、作業写真、家族との共有をひとつにまとめるアプリです。思いつきの片付けを卒業して、暮らしに合った整える習慣をつくれます。</p>
+                        <p>スマート片付けは、画像解析による自動登録、収納場所レコメンド、あいまい検索、収納情報の最新化で、片付けの面倒と迷いを減らすアプリです。一個ずつ登録しなくても、何をすべきか分からなくても、あとで言葉が違っても、取り出した後に情報が古くなっても回ります。</p>
                         <div class="cta-row">
                             <a href="/install/" class="button button-primary">無料で始める</a>
                             <a href="#features" class="button button-secondary">できることを見る</a>
                         </div>
                         <div class="hero-points">
                             <div class="point-card">
-                                <strong>1画面</strong>
-                                <span>やること、収納、進捗を一覧で確認</span>
+                                <strong>画像解析</strong>
+                                <span>撮るだけでアイテム候補をまとめて登録</span>
                             </div>
                             <div class="point-card">
-                                <strong>家族共有</strong>
-                                <span>誰が何をやるか、その場で決まる</span>
+                                <strong>収納提案</strong>
+                                <span>何をどこへしまうかをアプリがレコメンド</span>
                             </div>
                             <div class="point-card">
-                                <strong>習慣化</strong>
-                                <span>週1リセットを無理なく続ける設計</span>
+                                <strong>あいまい検索</strong>
+                                <span>登録時と違う言葉でも見つけやすい</span>
+                            </div>
+                            <div class="point-card">
+                                <strong>最新化</strong>
+                                <span>取り出した後の収納情報もすぐ更新</span>
                             </div>
                         </div>
                     </div>
@@ -716,27 +724,27 @@
                         <div class="orb one"></div>
                         <div class="orb two"></div>
                         <div class="floating-note top">
-                            <strong>今日の5分リセット</strong>
-                            <p>玄関、洗面所、リビングを順番に。短時間でも片付けが前進します。</p>
+                            <strong>画像追加が一気に終わる</strong>
+                            <p>箱の中身や棚の写真から候補を抽出。1個ずつ入力する手間を減らします。</p>
                         </div>
                         <div class="dashboard">
                             <div class="dashboard-head">
-                                <div class="dashboard-title">わが家の片付けボード</div>
-                                <div class="mini-badge">今週 68%</div>
+                                <div class="dashboard-title">スマート片付け AIボード</div>
+                                <div class="mini-badge">自動提案 4件</div>
                             </div>
                             <div class="dashboard-grid">
                                 <div class="panel">
                                     <div class="task-row">
                                         <div>
-                                            <div class="task-label">リビングの一時置き解消</div>
-                                            <div class="task-meta">今日中 ・ 15分</div>
+                                            <div class="task-label">画像解析: 日用品を7件検出</div>
+                                            <div class="task-meta">洗面所の棚写真から自動候補化</div>
                                         </div>
                                         <div class="check">✓</div>
                                     </div>
                                     <div class="task-row">
                                         <div>
-                                            <div class="task-label">書類を「保管 / 処分」に仕分け</div>
-                                            <div class="task-meta">土曜朝 ・ 20分</div>
+                                            <div class="task-label">旧タオル在庫をまとめて登録</div>
+                                            <div class="task-meta">確認だけで保存完了</div>
                                         </div>
                                         <div class="check">✓</div>
                                     </div>
@@ -745,40 +753,40 @@
                                 <div class="panel">
                                     <div class="storage-row">
                                         <div>
-                                            <div class="storage-label">電池と工具</div>
-                                            <div class="storage-meta">納戸 A-2 / 透明ケース</div>
+                                            <div class="storage-label">収納提案: 電池は工具ボックスへ</div>
+                                            <div class="storage-meta">使用頻度とカテゴリからレコメンド</div>
                                         </div>
-                                        <div class="mini-badge">収納</div>
+                                        <div class="mini-badge">提案</div>
                                     </div>
                                     <div class="storage-row">
                                         <div>
-                                            <div class="storage-label">保育園書類</div>
-                                            <div class="storage-meta">キッチン横 / ファイル棚</div>
+                                            <div class="storage-label">検索: 「ネジ」でも「DIY部品」が出る</div>
+                                            <div class="storage-meta">昔の登録名と違ってもたどり着ける</div>
                                         </div>
-                                        <div class="mini-badge">書類</div>
+                                        <div class="mini-badge">検索</div>
                                     </div>
                                 </div>
                                 <div class="panel">
                                     <div class="family-row">
                                         <div>
-                                            <div class="family-label">ママ</div>
-                                            <div class="family-meta">衣替えの仕分け担当</div>
+                                            <div class="family-label">最新化: ドライバーを取り出し済み</div>
+                                            <div class="family-meta">ワンタップで収納状況を更新</div>
                                         </div>
-                                        <div class="check">2件</div>
+                                        <div class="check">更新</div>
                                     </div>
                                     <div class="family-row">
                                         <div>
-                                            <div class="family-label">パパ</div>
-                                            <div class="family-meta">粗大ごみ申込み担当</div>
+                                            <div class="family-label">次の片付け候補も自動で整理</div>
+                                            <div class="family-meta">何をすれば良いか迷わない</div>
                                         </div>
-                                        <div class="check">1件</div>
+                                        <div class="check">AI</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="floating-note bottom">
-                            <strong>収納メモも残せる</strong>
-                            <p>「どこに何を置いたか」を写真とメモで記録。探し物の時間を減らします。</p>
+                            <strong>古い情報を放置しない</strong>
+                            <p>物を取り出した瞬間に最新化。登録した収納情報がいつの間にか古くなる問題を防ぎます。</p>
                         </div>
                     </div>
                 </div>
@@ -788,26 +796,31 @@
                 <div class="container">
                     <div class="section-head">
                         <div>
-                            <span class="section-label">片付けの悩みを整理</span>
-                            <h2>片付けが続かない理由は、<br>気合いではなく設計不足です。</h2>
+                            <span class="section-label">解放される4つの悩み</span>
+                            <h2>片付けが面倒なのは、<br>作業が多すぎて情報が古くなるからです。</h2>
                         </div>
-                        <p class="section-copy">何から手を付けるか曖昧、家族に共有できない、片付けた後の状態が残らない。スマート片付けは、散らかる原因そのものを管理しやすい形に整えます。</p>
+                        <p class="section-copy">登録が面倒、どこにしまえばいいか分からない、昔の登録名と違うと見つからない、取り出した後の情報が古くなる。スマート片付けは、この4つの詰まりをまとめて解消します。</p>
                     </div>
                     <div class="problem-grid">
                         <article class="card">
                             <div class="problem-number">01</div>
-                            <h3>やることが大きすぎる</h3>
-                            <p>「子ども部屋を片付ける」のような曖昧な目標を、10分単位の行動に分解できます。</p>
+                            <h3>一個ずつ登録するのが面倒</h3>
+                            <p>画像解析で複数アイテムを候補化。確認中心のフローに変わるので、登録作業の負担が一気に下がります。</p>
                         </article>
                         <article class="card">
                             <div class="problem-number">02</div>
-                            <h3>片付けた状態が定着しない</h3>
-                            <p>収納場所を写真とメモで残せるので、元に戻す基準が家族全員に共有されます。</p>
+                            <h3>何をすればいいか分からない</h3>
+                            <p>収納場所レコメンドで、アイテムの特性や使う場所に合わせたしまい先を提案します。</p>
                         </article>
                         <article class="card">
                             <div class="problem-number">03</div>
-                            <h3>担当が曖昧になる</h3>
-                            <p>担当、期限、優先度をひと目で確認。声かけベースの片付けから卒業できます。</p>
+                            <h3>検索しても引っかからない</h3>
+                            <p>昔つけた名前と今思い出した言葉が違っても、あいまい検索で探しやすくなります。</p>
+                        </article>
+                        <article class="card">
+                            <div class="problem-number">04</div>
+                            <h3>収納情報がいつの間にか古い</h3>
+                            <p>取り出し後の状態を簡単に更新できるので、「登録してあるのに実物がない」を減らせます。</p>
                         </article>
                     </div>
                 </div>
@@ -817,46 +830,46 @@
                 <div class="container">
                     <div class="section-head">
                         <div>
-                            <span class="section-label">できること</span>
-                            <h2>毎日の片付けを、<br>アプリひとつで前に進める。</h2>
+                            <span class="section-label">肝となる4機能</span>
+                            <h2>片付けの面倒は、<br>4つの機能で軽くできます。</h2>
                         </div>
-                        <p class="section-copy">思いつきで片付けるのではなく、決めて、残して、続けるための機能をまとめています。</p>
+                        <p class="section-copy">このアプリケーションの価値は、登録、収納判断、検索、最新化の4点をそれぞれきちんと楽にすることにあります。</p>
                     </div>
                     <div class="feature-grid">
                         <article class="card feature-card">
-                            <h3>片付けタスクを小さく分解</h3>
-                            <p>部屋ごと、棚ごと、カテゴリごとに分けて登録。忙しい日でも進めやすい粒度にできます。</p>
+                            <h3>1. 画像解析による画像追加</h3>
+                            <p>写真を起点にアイテム候補を抽出し、まとめて登録候補をつくります。一個一個入力する手間を減らす中核機能です。</p>
                             <ul class="feature-list">
-                                <li>優先度、期限、所要時間を設定</li>
-                                <li>週次リセットや繰り返しタスクに対応</li>
-                                <li>後回しのタスクを自動で見直し</li>
+                                <li>棚や箱の中身をまとめて候補化</li>
+                                <li>確認しながら短時間で登録完了</li>
+                                <li>登録漏れや入力負担を減らせる</li>
                             </ul>
                         </article>
                         <article class="card feature-card">
-                            <h3>収納場所を写真で記録</h3>
-                            <p>引き出しやボックスごとの写真、メモ、ラベルをまとめて保存。探し物が減ります。</p>
+                            <h3>2. 収納場所レコメンド</h3>
+                            <p>片付けるときに「何をすればいいか分からない」を防ぐため、アイテムに合った収納場所や置き方を提案します。</p>
                             <ul class="feature-list">
-                                <li>Before / After を残して達成感を可視化</li>
-                                <li>ラベル検索で収納場所をすぐ確認</li>
-                                <li>捨てる・残す判断メモも記録</li>
+                                <li>使用頻度やカテゴリに応じて提案</li>
+                                <li>迷いを減らして片付け開始が早い</li>
+                                <li>生活動線に合うしまい先を決めやすい</li>
                             </ul>
                         </article>
                         <article class="card feature-card">
-                            <h3>家族で役割分担できる</h3>
-                            <p>同居家族やパートナーと共有し、誰がどこを担当するかをその場で決められます。</p>
+                            <h3>3. あいまい検索</h3>
+                            <p>昔登録していた言葉と違っても、思い出した単語から見つけやすい検索体験を目指しています。</p>
                             <ul class="feature-list">
-                                <li>担当者ごとの一覧表示</li>
-                                <li>完了報告とコメント共有</li>
-                                <li>声をかけなくても進捗が見える</li>
+                                <li>登録名と検索語がずれても探しやすい</li>
+                                <li>カテゴリや関連語から候補を表示</li>
+                                <li>探し物のストレスを減らせる</li>
                             </ul>
                         </article>
                         <article class="card feature-card">
-                            <h3>片付けの習慣が続く</h3>
-                            <p>小さな達成を積み上げる設計で、「一気にやる」から「少しずつ整える」へ切り替えられます。</p>
+                            <h3>4. 場所タグ情報の最新化</h3>
+                            <p>物を取り出したあとも、場所タグにひもづく情報をすばやく更新。収納情報が古くなる問題を抑えます。</p>
                             <ul class="feature-list">
-                                <li>今週の達成率を自動集計</li>
-                                <li>散らかりやすい場所を重点管理</li>
-                                <li>暮らしに合わせたリマインド通知</li>
+                                <li>取り出し後の状態をワンタップ更新</li>
+                                <li>在庫や収納状況を最新に保ちやすい</li>
+                                <li>家族で見ても情報がずれにくい</li>
                             </ul>
                         </article>
                     </div>
@@ -868,25 +881,30 @@
                     <div class="section-head">
                         <div>
                             <span class="section-label">使い方</span>
-                            <h2>始め方は、<br>たった3ステップです。</h2>
+                            <h2>使う流れも、<br>4ステップでシンプルです。</h2>
                         </div>
-                        <p class="section-copy">最初から完璧を目指す必要はありません。よく散らかる場所をひとつ選ぶだけで十分です。</p>
+                        <p class="section-copy">撮る、提案を見る、検索する、更新する。この循環が回ると片付け情報が生きたまま保てます。</p>
                     </div>
                     <div class="flow-grid">
                         <article class="card flow-card">
                             <div class="flow-number">1</div>
-                            <strong>場所を決める</strong>
-                            <p>まずは玄関、洗面所、リビングなど、よく散らかる場所を一つ登録します。</p>
+                            <strong>撮る</strong>
+                            <p>棚や箱の中身を撮影し、画像解析でアイテム候補をまとめて出します。</p>
                         </article>
                         <article class="card flow-card">
                             <div class="flow-number">2</div>
-                            <strong>やることを分ける</strong>
-                            <p>「戻す」「捨てる」「保留にする」の3つに分けるだけで、迷いが減ります。</p>
+                            <strong>提案を見る</strong>
+                            <p>収納場所レコメンドを見ながら、どこにしまうかを迷わず決めます。</p>
                         </article>
                         <article class="card flow-card">
                             <div class="flow-number">3</div>
-                            <strong>家族と共有する</strong>
-                            <p>担当や期限を共有し、片付いた状態を写真で残して次回に活かします。</p>
+                            <strong>あとで検索する</strong>
+                            <p>登録時と違う言葉でも、思い出した単語からアイテムを探せます。</p>
+                        </article>
+                        <article class="card flow-card">
+                            <div class="flow-number">4</div>
+                            <strong>状態を更新する</strong>
+                            <p>物を取り出したら、場所タグの情報をすぐ最新化してズレを残しません。</p>
                         </article>
                     </div>
                 </div>
@@ -896,28 +914,28 @@
                 <div class="container">
                     <div class="section-head">
                         <div>
-                            <span class="section-label">続けやすさ</span>
-                            <h2>片付いた家ではなく、<br>片付けやすい家をつくる。</h2>
+                            <span class="section-label">このLPで伝えたい価値</span>
+                            <h2>片付けを頑張るのではなく、<br>片付けの詰まりを消していく。</h2>
                         </div>
-                        <p class="section-copy">一度きりの大掃除ではなく、暮らしの中で回る運用をつくる。それがスマート片付けの考え方です。</p>
+                        <p class="section-copy">登録の面倒、収納判断の迷い、検索の不一致、情報の陳腐化。この4つが減ると、片付けは一気に日常へ戻せます。</p>
                     </div>
                     <div class="voice-grid">
                         <article class="card">
-                            <p class="quote">「どこに戻せばいいか」が家族で共有されるだけで、散らかり方が変わりました。片付けがイベントではなく、日常の流れになります。</p>
-                            <small>収納場所の記録、作業の分担、進捗の見える化を一つにまとめることで、片付けの負担を減らします。</small>
+                            <p class="quote">「登録が面倒だから続かない」を減らし、「どこにしまうか分からない」「検索しても見つからない」「情報が古い」をまとめて解決する。それがスマート片付けの価値です。</p>
+                            <small>片付け管理ではなく、片付けの詰まりをなくすための4機能を中心に設計しています。</small>
                         </article>
                         <div class="mini-stats">
                             <article class="mini-stat">
-                                <strong>10分単位</strong>
-                                <span>すき間時間でも進めやすいタスク設計</span>
+                                <strong>自動登録</strong>
+                                <span>画像解析で入力作業を短縮</span>
                             </article>
                             <article class="mini-stat">
-                                <strong>写真で記録</strong>
-                                <span>片付いた状態を次回の基準にできる</span>
+                                <strong>収納提案</strong>
+                                <span>次にやるべきことが分かる</span>
                             </article>
                             <article class="mini-stat">
-                                <strong>共有前提</strong>
-                                <span>家族で役割が曖昧にならない</span>
+                                <strong>検索と更新</strong>
+                                <span>見つかる状態と最新状態を保てる</span>
                             </article>
                         </div>
                     </div>
@@ -928,8 +946,8 @@
                 <div class="container">
                     <div class="cta-box">
                         <span class="section-label">iPhone / Android 対応</span>
-                        <h2>今日の5分から、<br>スマート片付けを始めましょう。</h2>
-                        <p>片付けタスク、収納メモ、写真、共有をひとつにまとめて、散らからない暮らしの土台をつくれます。</p>
+                        <h2>撮るだけ登録から始めて、<br>片付けの面倒を減らしましょう。</h2>
+                        <p>画像解析、収納場所レコメンド、あいまい検索、場所タグ情報の最新化で、片付けを続けやすい運用に変えられます。</p>
                         <div class="cta-row">
                             <a href="/install/" class="button button-primary">アプリをインストール</a>
                             <a href="/privacy_policy.html" class="button button-secondary">プライバシーポリシー</a>

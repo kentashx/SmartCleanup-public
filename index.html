@@ -3,24 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>スマスイ | 水泳と筋トレの練習メニュー・レース記録を一元管理</title>
-        <meta name="description" content="スマスイは、水泳と筋トレの練習を一括管理する水泳専用アプリです。AIコーチによる練習メニュー提案や振り返り、ワールドポイントの確認、フォームの動画比較など、マスターズやフィンスイミングに取り組む全てのスイマーの実力向上をサポートします。">
-        <meta name="keywords" content="スマスイ, 水泳アプリ, 筋トレ, 練習メニュー, 水泳記録管理, マスターズ水泳, フィンスイミング, AIコーチ, フォーム分析">
-        <!-- OGP Tags -->
-        <meta property="og:site_name" content="スマスイ - ">
-        <meta property="og:title" content="スマスイ | 水泳・筋トレの練習メニューと記録を一元管理するアプリ">
-        <meta property="og:description" content="AIコーチのサポートやレース動画比較など、水泳競技者のための便利機能が満載。スマスイで自己ベスト更新を目指そう！">
+        <title>スマート片付け | 家中の片付けを、見える化して続けるアプリ</title>
+        <meta name="description" content="スマート片付けは、片付けタスク、収納メモ、作業写真、家族との共有をひとつにまとめる片付け管理アプリです。散らかる前に整える仕組みをつくり、毎日の片付けを無理なく続けられます。">
+        <meta name="keywords" content="スマート片付け, 片付けアプリ, 整理整頓, 収納管理, 家事共有, タスク管理, 片付け習慣, 断捨離">
+        <meta property="og:site_name" content="スマート片付け">
+        <meta property="og:title" content="スマート片付け | 家中の片付けを、見える化して続けるアプリ">
+        <meta property="og:description" content="片付けタスク、収納メモ、写真、家族共有をひとつに。スマート片付けで、散らからない暮らしを仕組み化。">
         <meta property="og:type" content="website">
         <meta property="og:image" content="/icon.png">
-        <!-- Twitter Card -->
         <meta name="twitter:card" content="summary">
-        <meta name="twitter:title" content="スマスイ | 水泳と筋トレの練習を一括管理">
-        <meta name="twitter:description" content="水泳と筋トレを、1つに。AIコーチのサポートやレース動画比較など、競技者のための便利機能が満載の練習管理アプリ。">
+        <meta name="twitter:title" content="スマート片付け | 家中の片付けを、見える化して続けるアプリ">
+        <meta name="twitter:description" content="やること、置き場所、進み具合をひとつにまとめる片付け管理アプリ。">
         <meta name="twitter:image" content="/icon.png">
         <link rel="icon" type="image/svg+xml" href="icon.svg">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
         <style>
         * {
             margin: 0;
@@ -29,362 +27,581 @@
         }
 
         :root {
-            --bg-color: #000000;
-            --text-color: #ffffff;
-            --accent-color: #00ffff; /* Neon Cyan for water feel */
-            --accent-glow: rgba(0, 255, 255, 0.4);
-            --muted-color: #bbbbbb;
-            --surface-color: #111111;
-            --grid-color: rgba(255, 255, 255, 0.04);
+            --bg: #d8dde5;
+            --paper: rgba(244, 248, 253, 0.7);
+            --paper-strong: #f8fbff;
+            --ink: #171c24;
+            --muted: #5b6573;
+            --line: rgba(23, 28, 36, 0.12);
+            --accent: #b9c4d2;
+            --accent-soft: #e7edf5;
+            --accent-strong: #556274;
+            --warm: #d7dfe9;
+            --shadow: 0 28px 60px rgba(34, 40, 51, 0.12);
         }
 
         html {
             scroll-behavior: smooth;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Noto Sans JP', 'Inter', sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(232, 238, 245, 0.9), transparent 30%),
+                radial-gradient(circle at 85% 20%, rgba(166, 179, 194, 0.3), transparent 28%),
+                linear-gradient(180deg, #edf2f8 0%, #d8dde5 45%, #c5ccd6 100%);
+            color: var(--ink);
             overflow-x: hidden;
         }
 
         body {
-            line-height: 1.6;
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 5%;
-        }
-
-        /* Typography */
-        h1, h2, h3, .display-text {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: -0.01em;
-            margin: 0;
-        }
-
-        h2 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            margin-bottom: 2rem;
-            color: var(--text-color);
-            position: relative;
-        }
-
-        .subtitle {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-            font-weight: 700;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        p {
-            font-size: clamp(1rem, 1.5vw, 1.25rem);
-            color: var(--muted-color);
-            max-width: 580px;
-            line-height: 1.8;
-            font-weight: 500;
-        }
-
-        /* Header */
-        header {
+        body::before {
+            content: "";
             position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(74, 84, 98, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(74, 84, 98, 0.04) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        header {
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem 5%;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: rgba(232, 238, 245, 0.68);
+            border-bottom: 1px solid rgba(74, 84, 98, 0.1);
+        }
+
+        .header-inner {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            mix-blend-mode: difference;
+            justify-content: space-between;
+            padding: 18px 0;
         }
 
         .logo {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 2rem;
-            font-weight: 900;
-            color: #fff;
+            color: var(--ink);
             text-decoration: none;
-            letter-spacing: 0.05em;
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            font-size: 1.1rem;
         }
 
         .nav-link {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-            padding: 0.6rem 1.8rem;
-            border: 2px solid #fff;
-            border-radius: 50px;
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .nav-link:hover {
-            background-color: #fff;
-            color: #000;
-            transform: scale(1.05);
-        }
-
-        /* Hero */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            padding-top: 5rem;
-            overflow: hidden;
-        }
-
-        .hero h1 {
-            font-size: clamp(4rem, 12vw, 10rem);
-            position: relative;
-            z-index: 2;
-            line-height: 1.05;
-        }
-
-        .hero h1 span {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero .highlight {
-            color: var(--accent-color);
-            text-shadow: 0 0 40px var(--accent-glow);
-        }
-
-        .hero-images {
-            position: absolute;
-            top: 10%;
-            right: -5%;
-            width: 70%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            opacity: 0.8;
-            mask-image: linear-gradient(to right, transparent, black 40%);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 30%);
-        }
-
-        .hero-images img {
-            height: 90vh;
-            object-fit: contain;
-            transform: rotate(5deg) translateY(20px);
-            filter: drop-shadow(0 20px 50px rgba(0, 255, 255, 0.2)) brightness(1.1);
-            animation: floatHero 8s ease-in-out infinite;
-        }
-
-        @keyframes floatHero {
-            0% { transform: rotate(5deg) translateY(20px); }
-            50% { transform: rotate(2deg) translateY(-20px) scale(1.02); }
-            100% { transform: rotate(5deg) translateY(20px); }
-        }
-
-        /* Sections */
-        .section {
-            padding: 8rem 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .grid-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .grid-layout.reverse {
-            direction: rtl;
-        }
-
-        .grid-layout.reverse > * {
-            direction: ltr;
-        }
-
-        .feature-images {
-            position: relative;
-            height: 600px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            perspective: 1000px;
-        }
-
-        .feature-img {
-            position: absolute;
-            max-width: 100%;
-            height: 110%;
-            object-fit: contain;
-            border-radius: 40px;
-            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.8));
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .feature-img.main {
-            z-index: 2;
-            transform: translateX(0) translateZ(50px);
-        }
-
-        .feature-img.secondary {
-            z-index: 1;
-            transform: translateX(-25%) scale(0.9) rotate(-6deg) translateZ(0);
-            opacity: 0.5;
-            filter: blur(4px) brightness(0.4);
-        }
-
-        .grid-layout.reverse .feature-img.secondary {
-            transform: translateX(25%) scale(0.9) rotate(6deg) translateZ(0);
-        }
-        
-        .grid-layout:hover .feature-img.main {
-            transform: translateX(10%) translateZ(80px) scale(1.05);
-        }
-        
-        .grid-layout:hover .feature-img.secondary {
-            transform: translateX(-35%) scale(0.95) rotate(-10deg) translateZ(0);
-            opacity: 0.8;
-            filter: blur(1px) brightness(0.7);
-        }
-
-        .grid-layout.reverse:hover .feature-img.main {
-            transform: translateX(-10%) translateZ(80px) scale(1.05);
-        }
-
-        .grid-layout.reverse:hover .feature-img.secondary {
-            transform: translateX(35%) scale(0.95) rotate(10deg) translateZ(0);
-            opacity: 0.8;
-            filter: blur(1px) brightness(0.7);
-        }
-
-        .feature-content ul {
-            list-style: none;
-            margin-top: 2.5rem;
-        }
-
-        .feature-content li {
-            font-size: 1.15rem;
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: flex-start;
-            color: #fff;
-            font-weight: 500;
-        }
-
-        .feature-content li::before {
-            content: '■';
-            color: var(--accent-color);
-            margin-right: 1.2rem;
-            font-size: 0.9rem;
-            margin-top: 0.2rem;
-            text-shadow: 0 0 10px var(--accent-color);
-        }
-
-        /* Grid Background Pattern */
-        .grid-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 60px 60px;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .section-bg-glow {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.3;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            text-align: center;
-            padding: 12rem 0;
-            background: linear-gradient(180deg, transparent, rgba(0, 255, 255, 0.05), #050505);
-            position: relative;
-        }
-
-        .cta-section h2 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
-        }
-
-        .cta-section p {
-            margin: 0 auto;
-            color: #fff;
-        }
-
-        .store-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 3.5rem;
-            flex-wrap: wrap;
-        }
-
-        .store-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 1.2rem 3rem;
-            font-family: 'Noto Sans JP', sans-serif;
-            font-weight: 800;
-            font-size: 1.1rem;
-            color: #000;
-            background: #fff;
-            border-radius: 100px;
+            padding: 12px 18px;
+            border-radius: 999px;
             text-decoration: none;
-            letter-spacing: 0.05em;
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            border: 1px solid var(--line);
+            color: var(--ink);
+            font-weight: 700;
+            background: rgba(246, 249, 253, 0.62);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .store-button.primary {
-            background: var(--accent-color);
-            box-shadow: 0 0 20px var(--accent-glow);
+        .nav-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(48, 54, 41, 0.1);
         }
 
-        .store-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        .hero {
+            padding: 72px 0 56px;
         }
 
-        .store-button.primary:hover {
-            box-shadow: 0 20px 40px var(--accent-glow);
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.08fr 0.92fr;
+            gap: 42px;
+            align-items: center;
         }
 
-        /* Animations */
+        .eyebrow,
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(247, 250, 255, 0.76);
+            border: 1px solid rgba(74, 84, 98, 0.1);
+            color: var(--accent-strong);
+            font-weight: 700;
+            font-size: 0.88rem;
+            letter-spacing: 0.06em;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6.6rem);
+            line-height: 1.04;
+            margin-top: 18px;
+            letter-spacing: -0.04em;
+            font-weight: 900;
+        }
+
+        .hero h1 .accent {
+            color: #718096;
+        }
+
+        .hero p {
+            margin-top: 22px;
+            max-width: 34rem;
+            color: var(--muted);
+            font-size: clamp(1rem, 2.1vw, 1.16rem);
+        }
+
+        .cta-row {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 0 22px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .button-primary {
+            color: #10151d;
+            background: linear-gradient(135deg, #f2f6fb, #9ea9b8);
+            box-shadow: 0 18px 34px rgba(85, 98, 116, 0.2);
+        }
+
+        .button-secondary {
+            color: var(--ink);
+            background: rgba(245, 248, 252, 0.72);
+            border: 1px solid var(--line);
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero-points {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 34px;
+        }
+
+        .point-card {
+            padding: 16px;
+            border-radius: 20px;
+            background: rgba(244, 248, 253, 0.58);
+            border: 1px solid rgba(31, 42, 31, 0.08);
+            box-shadow: 0 12px 24px rgba(34, 40, 51, 0.06);
+        }
+
+        .point-card strong {
+            display: block;
+            font-family: 'Sora', sans-serif;
+            font-size: 1.45rem;
+            color: var(--accent-strong);
+        }
+
+        .point-card span {
+            display: block;
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .hero-visual {
+            position: relative;
+            min-height: 620px;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 999px;
+            filter: blur(6px);
+        }
+
+        .orb.one {
+            inset: 18px auto auto 24px;
+            width: 220px;
+            height: 220px;
+            background: rgba(233, 238, 244, 0.55);
+        }
+
+        .orb.two {
+            inset: auto 10px 48px auto;
+            width: 190px;
+            height: 190px;
+            background: rgba(152, 165, 181, 0.28);
+        }
+
+        .dashboard {
+            position: relative;
+            z-index: 1;
+            margin: 32px auto 0;
+            width: min(100%, 470px);
+            border-radius: 34px;
+            padding: 22px;
+            background: rgba(244, 248, 253, 0.86);
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(18px);
+            transform: rotate(2deg);
+        }
+
+        .dashboard-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+
+        .dashboard-title {
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .mini-badge {
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            gap: 14px;
+        }
+
+        .panel {
+            border-radius: 24px;
+            padding: 18px;
+            background: var(--paper-strong);
+            border: 1px solid rgba(74, 84, 98, 0.1);
+        }
+
+        .task-row,
+        .storage-row,
+        .family-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .task-row + .task-row,
+        .storage-row + .storage-row,
+        .family-row + .family-row {
+            margin-top: 12px;
+        }
+
+        .task-label,
+        .storage-label,
+        .family-label {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .task-meta,
+        .storage-meta,
+        .family-meta {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .check {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: #dde4ec;
+            color: var(--accent-strong);
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        .meter {
+            height: 12px;
+            border-radius: 999px;
+            background: #dbe2ea;
+            overflow: hidden;
+            margin-top: 14px;
+        }
+
+        .meter span {
+            display: block;
+            height: 100%;
+            width: 68%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #eef3f8, #9aa6b6);
+        }
+
+        .floating-note {
+            position: absolute;
+            z-index: 2;
+            max-width: 220px;
+            padding: 16px 18px;
+            border-radius: 22px;
+            background: rgba(247, 250, 255, 0.82);
+            border: 1px solid rgba(74, 84, 98, 0.1);
+            box-shadow: 0 18px 32px rgba(48, 54, 41, 0.09);
+            backdrop-filter: blur(14px);
+        }
+
+        .floating-note.top {
+            top: 10px;
+            right: 0;
+        }
+
+        .floating-note.bottom {
+            bottom: 20px;
+            left: 0;
+        }
+
+        .floating-note strong {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--ink);
+        }
+
+        .floating-note p {
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        section {
+            padding: 44px 0;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            align-items: end;
+            margin-bottom: 28px;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            line-height: 1.12;
+            letter-spacing: -0.03em;
+        }
+
+        .section-copy {
+            color: var(--muted);
+            max-width: 34rem;
+        }
+
+        .problem-grid,
+        .feature-grid,
+        .flow-grid,
+        .voice-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .problem-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .feature-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .flow-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .voice-grid {
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: stretch;
+        }
+
+        .card {
+            padding: 24px;
+            border-radius: 28px;
+            background: rgba(244, 248, 253, 0.74);
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(16px);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .card p,
+        .card li {
+            color: var(--muted);
+        }
+
+        .problem-number,
+        .flow-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            margin-bottom: 16px;
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+        }
+
+        .feature-card {
+            min-height: 250px;
+        }
+
+        .feature-list,
+        .voice-list {
+            margin-top: 16px;
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .feature-list li,
+        .voice-list li {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .feature-list li::before,
+        .voice-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #9eabb9;
+        }
+
+        .flow-card strong {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--ink);
+        }
+
+        .quote {
+            font-size: clamp(1.35rem, 2.4vw, 2rem);
+            line-height: 1.6;
+            color: var(--ink);
+        }
+
+        .quote small {
+            display: block;
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .mini-stats {
+            display: grid;
+            gap: 14px;
+        }
+
+        .mini-stat {
+            padding: 18px;
+            border-radius: 22px;
+            background: rgba(246, 249, 253, 0.78);
+            border: 1px solid var(--line);
+        }
+
+        .mini-stat strong {
+            display: block;
+            font-family: 'Sora', sans-serif;
+            font-size: 1.4rem;
+            color: var(--accent-strong);
+        }
+
+        .cta {
+            padding: 60px 0 90px;
+        }
+
+        .cta-box {
+            padding: 34px;
+            border-radius: 34px;
+            background: linear-gradient(135deg, rgba(44, 51, 61, 0.96), rgba(116, 128, 144, 0.92));
+            color: #f6f9fc;
+            box-shadow: 0 30px 50px rgba(44, 51, 61, 0.24);
+        }
+
+        .cta-box p {
+            color: rgba(246, 249, 252, 0.84);
+            margin-top: 12px;
+            max-width: 36rem;
+        }
+
+        .cta-box .cta-row {
+            margin-top: 24px;
+        }
+
+        .cta-box .button-primary {
+            background: #f4f7fb;
+            color: #202632;
+            box-shadow: none;
+        }
+
+        .cta-box .button-secondary {
+            border-color: rgba(246, 243, 235, 0.3);
+            color: #f6f3eb;
+            background: transparent;
+        }
+
+        footer {
+            padding: 0 0 48px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: center;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
         .reveal {
             opacity: 0;
-            transform: translateY(60px);
-            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(36px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .reveal.active {
@@ -392,220 +609,361 @@
             transform: translateY(0);
         }
 
-        footer {
-            text-align: center;
-            padding: 3rem 5%;
-            color: var(--muted-color);
-            border-top: 1px solid var(--surface-color);
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 0.9rem;
-            background: #050505;
-        }
-
-        @media (max-width: 1024px) {
-            .grid-layout, .grid-layout.reverse {
+        @media (max-width: 960px) {
+            .hero-grid,
+            .problem-grid,
+            .feature-grid,
+            .flow-grid,
+            .voice-grid {
                 grid-template-columns: 1fr;
-                text-align: center;
-                gap: 4rem;
-                direction: ltr;
             }
 
-            .grid-layout.reverse > * {
-                direction: ltr;
-            }
-            
-            p {
-                margin: 0 auto;
+            .section-head,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
-            .feature-images {
-                height: 500px;
-                order: -1;
+            .hero-visual {
+                min-height: auto;
             }
 
-            .feature-content li {
-                text-align: left;
-                width: fit-content;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .hero-images {
-                opacity: 0.3;
-                right: -20%;
-                width: 100%;
+            .dashboard {
+                transform: none;
             }
 
-            .feature-img.secondary {
-                display: none;
-            }
-            
-            .feature-img.main {
-                transform: translateX(0);
-            }
-            
-            .grid-layout:hover .feature-img.main,
-            .grid-layout.reverse:hover .feature-img.main {
-                transform: scale(1.05);
+            .floating-note {
+                position: static;
+                max-width: none;
+                margin-top: 14px;
             }
         }
-        
-        @media (max-width: 600px) {
+
+        @media (max-width: 640px) {
+            .container {
+                width: min(100% - 24px, 1180px);
+            }
+
+            .header-inner {
+                padding: 14px 0;
+            }
+
             .hero {
-                padding-top: 8rem;
+                padding-top: 40px;
             }
-            .feature-images {
-                height: 400px;
+
+            .hero-points {
+                grid-template-columns: 1fr;
             }
-            .store-buttons {
+
+            .cta-box,
+            .card,
+            .dashboard {
+                padding: 22px;
+                border-radius: 24px;
+            }
+
+            .cta-row {
                 flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
             }
         }
         </style>
     </head>
     <body>
-        <div class="grid-pattern"></div>
         <header>
-            <a href="#" class="logo">スマスイ</a>
-            <a href="#download" class="nav-link">アプリを入手</a>
+            <div class="container header-inner">
+                <a href="/" class="logo">スマート片付け</a>
+                <a href="/install/" class="nav-link">アプリをはじめる</a>
+            </div>
         </header>
         <main>
-            <!-- Hero Section -->
-            <section class="hero container">
-                <div class="hero-content reveal active">
-                    <span class="subtitle">水泳と筋トレを、1つに。</span>
-                    <h1>
-                        <span>泳ぐ。</span>
-                        <span>記録する。</span>
-                        <span class="highlight">超えていく。</span>
-                    </h1>
-                </div>
-                <div class="hero-images">
-                    <img src="features/スマスイ_スクショ_iphoneフレーム付き/1.png" alt="スマスイ App Hero Image">
+            <section class="hero">
+                <div class="container hero-grid">
+                    <div class="reveal active">
+                        <span class="eyebrow">家族で続ける片付け管理アプリ</span>
+                        <h1>
+                            散らかる前に。
+                            <br>
+                            迷う前に。
+                            <br>
+                            <span class="accent">片付く仕組みを。</span>
+                        </h1>
+                        <p>スマート片付けは、家の中のやること、収納場所、作業写真、家族との共有をひとつにまとめるアプリです。思いつきの片付けを卒業して、暮らしに合った整える習慣をつくれます。</p>
+                        <div class="cta-row">
+                            <a href="/install/" class="button button-primary">無料で始める</a>
+                            <a href="#features" class="button button-secondary">できることを見る</a>
+                        </div>
+                        <div class="hero-points">
+                            <div class="point-card">
+                                <strong>1画面</strong>
+                                <span>やること、収納、進捗を一覧で確認</span>
+                            </div>
+                            <div class="point-card">
+                                <strong>家族共有</strong>
+                                <span>誰が何をやるか、その場で決まる</span>
+                            </div>
+                            <div class="point-card">
+                                <strong>習慣化</strong>
+                                <span>週1リセットを無理なく続ける設計</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual reveal">
+                        <div class="orb one"></div>
+                        <div class="orb two"></div>
+                        <div class="floating-note top">
+                            <strong>今日の5分リセット</strong>
+                            <p>玄関、洗面所、リビングを順番に。短時間でも片付けが前進します。</p>
+                        </div>
+                        <div class="dashboard">
+                            <div class="dashboard-head">
+                                <div class="dashboard-title">わが家の片付けボード</div>
+                                <div class="mini-badge">今週 68%</div>
+                            </div>
+                            <div class="dashboard-grid">
+                                <div class="panel">
+                                    <div class="task-row">
+                                        <div>
+                                            <div class="task-label">リビングの一時置き解消</div>
+                                            <div class="task-meta">今日中 ・ 15分</div>
+                                        </div>
+                                        <div class="check">✓</div>
+                                    </div>
+                                    <div class="task-row">
+                                        <div>
+                                            <div class="task-label">書類を「保管 / 処分」に仕分け</div>
+                                            <div class="task-meta">土曜朝 ・ 20分</div>
+                                        </div>
+                                        <div class="check">✓</div>
+                                    </div>
+                                    <div class="meter"><span></span></div>
+                                </div>
+                                <div class="panel">
+                                    <div class="storage-row">
+                                        <div>
+                                            <div class="storage-label">電池と工具</div>
+                                            <div class="storage-meta">納戸 A-2 / 透明ケース</div>
+                                        </div>
+                                        <div class="mini-badge">収納</div>
+                                    </div>
+                                    <div class="storage-row">
+                                        <div>
+                                            <div class="storage-label">保育園書類</div>
+                                            <div class="storage-meta">キッチン横 / ファイル棚</div>
+                                        </div>
+                                        <div class="mini-badge">書類</div>
+                                    </div>
+                                </div>
+                                <div class="panel">
+                                    <div class="family-row">
+                                        <div>
+                                            <div class="family-label">ママ</div>
+                                            <div class="family-meta">衣替えの仕分け担当</div>
+                                        </div>
+                                        <div class="check">2件</div>
+                                    </div>
+                                    <div class="family-row">
+                                        <div>
+                                            <div class="family-label">パパ</div>
+                                            <div class="family-meta">粗大ごみ申込み担当</div>
+                                        </div>
+                                        <div class="check">1件</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="floating-note bottom">
+                            <strong>収納メモも残せる</strong>
+                            <p>「どこに何を置いたか」を写真とメモで記録。探し物の時間を減らします。</p>
+                        </div>
+                    </div>
                 </div>
             </section>
-            <!-- Feature 1: Record & Manage -->
-            <section class="section container">
-                <div class="section-bg-glow"></div>
-                <div class="grid-layout reveal">
-                    <div class="feature-content">
-                        <span class="subtitle">1. 練習と記録の統合</span>
-                        <h2>練習と大会結果を
-                            <br>一括管理
-                        </h2>
-                        <p>水泳と筋トレの練習をアプリひとつでお手軽に。メニュー登録も簡単に行え、ワールドポイントやジャンボウポイントの確認に対応。公式大会・マスターズ大会やフィンスイミングまで幅広くサポートします。</p>
-                        <ul>
-                            <li>水泳と筋トレの練習を一元管理</li>
-                            <li>自分の記録のワールドポイント、ジャンボウポイントが確認可能</li>
-                            <li>テンプレートからの簡単登録と水着の管理機能</li>
-                        </ul>
+
+            <section class="reveal">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <span class="section-label">片付けの悩みを整理</span>
+                            <h2>片付けが続かない理由は、<br>気合いではなく設計不足です。</h2>
+                        </div>
+                        <p class="section-copy">何から手を付けるか曖昧、家族に共有できない、片付けた後の状態が残らない。スマート片付けは、散らかる原因そのものを管理しやすい形に整えます。</p>
                     </div>
-                    <div class="feature-images">
-                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/1.png" alt="記録画面" class="feature-img main">
-                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/3.png" alt="メニュー登録画面" class="feature-img secondary">
-                    </div>
-                </div>
-            </section>
-            <!-- Feature 2: AI Coach -->
-            <section class="section container">
-                <div class="section-bg-glow" style="left: 20%;"></div>
-                <div class="grid-layout reverse reveal">
-                    <div class="feature-content">
-                        <span class="subtitle">2. AIコーチのサポート</span>
-                        <h2>目標へ導く
-                            <br>AIコーチ
-                        </h2>
-                        <p>専用のAIコーチが、あなたの目標に合わせた最適な練習メニューを提案。さらに、実施した練習内容に対して的確なフィードバックを提供し、日々の積み重ねを確かな実力へと変えていきます。</p>
-                        <ul>
-                            <li>AIコーチが目標に合った練習を自動提案</li>
-                            <li>毎回の練習に対する詳細なフィードバック</li>
-                            <li>常にモチベーションを高め、実力向上を支援</li>
-                        </ul>
-                    </div>
-                    <div class="feature-images">
-                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/10.png" alt="AIコーチ提案機能" class="feature-img main">
-                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/11.png" alt="AIフィードバック" class="feature-img secondary">
+                    <div class="problem-grid">
+                        <article class="card">
+                            <div class="problem-number">01</div>
+                            <h3>やることが大きすぎる</h3>
+                            <p>「子ども部屋を片付ける」のような曖昧な目標を、10分単位の行動に分解できます。</p>
+                        </article>
+                        <article class="card">
+                            <div class="problem-number">02</div>
+                            <h3>片付けた状態が定着しない</h3>
+                            <p>収納場所を写真とメモで残せるので、元に戻す基準が家族全員に共有されます。</p>
+                        </article>
+                        <article class="card">
+                            <div class="problem-number">03</div>
+                            <h3>担当が曖昧になる</h3>
+                            <p>担当、期限、優先度をひと目で確認。声かけベースの片付けから卒業できます。</p>
+                        </article>
                     </div>
                 </div>
             </section>
-            <!-- Feature 3: Team -->
-            <section class="section container">
-                <div class="section-bg-glow" style="top: 30%;"></div>
-                <div class="grid-layout reveal">
-                    <div class="feature-content">
-                        <span class="subtitle">3. チームとフォーム分析</span>
-                        <h2>チーム機能と
-                            <br>動画比較
-                        </h2>
-                        <p>チーム内での練習管理やコミュニケーションがシームレスに行えます。また、レース動画を記録と一緒に管理し、複数動画を並列に並べて比較する機能（β版）で、フォームの細かな違いを分析できます。</p>
-                        <ul>
-                            <li>チーム内でのスムーズな練習管理とコミュニケーション</li>
-                            <li>レース動画を記録と紐付けて一元管理</li>
-                            <li>動画を並列で比較してフォームを確認（β版）</li>
-                        </ul>
+
+            <section id="features" class="reveal">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <span class="section-label">できること</span>
+                            <h2>毎日の片付けを、<br>アプリひとつで前に進める。</h2>
+                        </div>
+                        <p class="section-copy">思いつきで片付けるのではなく、決めて、残して、続けるための機能をまとめています。</p>
                     </div>
-                    <div class="feature-images">
-                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/8.png" alt="チーム内コミュニケーション機能" class="feature-img main">
-                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/12.png" alt="レース動画の並列比較" class="feature-img secondary">
+                    <div class="feature-grid">
+                        <article class="card feature-card">
+                            <h3>片付けタスクを小さく分解</h3>
+                            <p>部屋ごと、棚ごと、カテゴリごとに分けて登録。忙しい日でも進めやすい粒度にできます。</p>
+                            <ul class="feature-list">
+                                <li>優先度、期限、所要時間を設定</li>
+                                <li>週次リセットや繰り返しタスクに対応</li>
+                                <li>後回しのタスクを自動で見直し</li>
+                            </ul>
+                        </article>
+                        <article class="card feature-card">
+                            <h3>収納場所を写真で記録</h3>
+                            <p>引き出しやボックスごとの写真、メモ、ラベルをまとめて保存。探し物が減ります。</p>
+                            <ul class="feature-list">
+                                <li>Before / After を残して達成感を可視化</li>
+                                <li>ラベル検索で収納場所をすぐ確認</li>
+                                <li>捨てる・残す判断メモも記録</li>
+                            </ul>
+                        </article>
+                        <article class="card feature-card">
+                            <h3>家族で役割分担できる</h3>
+                            <p>同居家族やパートナーと共有し、誰がどこを担当するかをその場で決められます。</p>
+                            <ul class="feature-list">
+                                <li>担当者ごとの一覧表示</li>
+                                <li>完了報告とコメント共有</li>
+                                <li>声をかけなくても進捗が見える</li>
+                            </ul>
+                        </article>
+                        <article class="card feature-card">
+                            <h3>片付けの習慣が続く</h3>
+                            <p>小さな達成を積み上げる設計で、「一気にやる」から「少しずつ整える」へ切り替えられます。</p>
+                            <ul class="feature-list">
+                                <li>今週の達成率を自動集計</li>
+                                <li>散らかりやすい場所を重点管理</li>
+                                <li>暮らしに合わせたリマインド通知</li>
+                            </ul>
+                        </article>
                     </div>
                 </div>
             </section>
-            <!-- Feature 4: Analysis -->
-            <section class="section container">
-                <div class="section-bg-glow" style="left: 80%; top: 40%;"></div>
-                <div class="grid-layout reverse reveal">
-                    <div class="feature-content">
-                        <span class="subtitle">4. 成長の可視化と分析</span>
-                        <h2>データで見る
-                            <br>詳細な分析
-                        </h2>
-                        <p>練習距離や負荷量の推移をグラフで視覚的に確認。種目毎のポイントもレーダーチャートで把握できるため、自分の強みと課題が明確になり、日本縦断を目指すモチベーションへも繋がります。</p>
-                        <ul>
-                            <li>練習距離、負荷量の推移をグラフで簡単確認</li>
-                            <li>種目毎のポイントを直感的なレーダーチャートで分析</li>
-                            <li>累計距離からランクを確認。目指せ、日本縦断！</li>
-                        </ul>
+
+            <section class="reveal">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <span class="section-label">使い方</span>
+                            <h2>始め方は、<br>たった3ステップです。</h2>
+                        </div>
+                        <p class="section-copy">最初から完璧を目指す必要はありません。よく散らかる場所をひとつ選ぶだけで十分です。</p>
                     </div>
-                    <div class="feature-images">
-                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/4.png" alt="推移グラフ" class="feature-img main">
-                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/6.png" alt="レーダーチャート" class="feature-img secondary">
+                    <div class="flow-grid">
+                        <article class="card flow-card">
+                            <div class="flow-number">1</div>
+                            <strong>場所を決める</strong>
+                            <p>まずは玄関、洗面所、リビングなど、よく散らかる場所を一つ登録します。</p>
+                        </article>
+                        <article class="card flow-card">
+                            <div class="flow-number">2</div>
+                            <strong>やることを分ける</strong>
+                            <p>「戻す」「捨てる」「保留にする」の3つに分けるだけで、迷いが減ります。</p>
+                        </article>
+                        <article class="card flow-card">
+                            <div class="flow-number">3</div>
+                            <strong>家族と共有する</strong>
+                            <p>担当や期限を共有し、片付いた状態を写真で残して次回に活かします。</p>
+                        </article>
                     </div>
                 </div>
             </section>
-            <!-- CTA Section -->
-            <section id="download" class="cta-section container reveal">
-                <h2>さあ、始めよう。</h2>
-                <p>スマスイで、自己ベスト更新のための習慣を身につけましょう。</p>
-                <div class="store-buttons">
-                    <a href="https://apps.apple.com/jp/app/%E3%82%B9%E3%83%9E%E3%82%B9%E3%82%A4/id6756019486" class="store-button primary">App Store</a>
-                    <a href="https://play.google.com/store/apps/details?id=jp.smartswim.app" class="store-button">Google Play</a>
+
+            <section class="reveal">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <span class="section-label">続けやすさ</span>
+                            <h2>片付いた家ではなく、<br>片付けやすい家をつくる。</h2>
+                        </div>
+                        <p class="section-copy">一度きりの大掃除ではなく、暮らしの中で回る運用をつくる。それがスマート片付けの考え方です。</p>
+                    </div>
+                    <div class="voice-grid">
+                        <article class="card">
+                            <p class="quote">「どこに戻せばいいか」が家族で共有されるだけで、散らかり方が変わりました。片付けがイベントではなく、日常の流れになります。</p>
+                            <small>収納場所の記録、作業の分担、進捗の見える化を一つにまとめることで、片付けの負担を減らします。</small>
+                        </article>
+                        <div class="mini-stats">
+                            <article class="mini-stat">
+                                <strong>10分単位</strong>
+                                <span>すき間時間でも進めやすいタスク設計</span>
+                            </article>
+                            <article class="mini-stat">
+                                <strong>写真で記録</strong>
+                                <span>片付いた状態を次回の基準にできる</span>
+                            </article>
+                            <article class="mini-stat">
+                                <strong>共有前提</strong>
+                                <span>家族で役割が曖昧にならない</span>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta reveal">
+                <div class="container">
+                    <div class="cta-box">
+                        <span class="section-label">iPhone / Android 対応</span>
+                        <h2>今日の5分から、<br>スマート片付けを始めましょう。</h2>
+                        <p>片付けタスク、収納メモ、写真、共有をひとつにまとめて、散らからない暮らしの土台をつくれます。</p>
+                        <div class="cta-row">
+                            <a href="/install/" class="button button-primary">アプリをインストール</a>
+                            <a href="/privacy_policy.html" class="button button-secondary">プライバシーポリシー</a>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
         <footer>
-            <p>&copy; 2026 スマスイ - . All rights reserved.</p>
+            <div class="container footer-inner">
+                <p>&copy; 2026 スマート片付け. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="/install/">インストール</a>
+                    <a href="/terms_of_service.html">利用規約</a>
+                    <a href="/privacy_policy.html">プライバシーポリシー</a>
+                </div>
+            </div>
         </footer>
         <script>
-        // Scroll Reveal Animation
         const revealElements = document.querySelectorAll('.reveal');
 
         const revealOnScroll = () => {
             const windowHeight = window.innerHeight;
-            const elementVisible = 150;
-
             revealElements.forEach((element) => {
-                const elementTop = element.getBoundingClientRect().top;
-                if (elementTop < windowHeight - elementVisible) {
+                const top = element.getBoundingClientRect().top;
+                if (top < windowHeight - 120) {
                     element.classList.add('active');
                 }
             });
         };
 
-        // Initialize scroll listener
         window.addEventListener('scroll', revealOnScroll);
-        
-        // Trigger once on load with a slight delay to ensure rendering
-        setTimeout(revealOnScroll, 100);
+        window.addEventListener('load', revealOnScroll);
+        setTimeout(revealOnScroll, 120);
         </script>
     </body>
 </html>

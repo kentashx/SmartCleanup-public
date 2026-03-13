@@ -3,12 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>スマスイ | 大会入力のお願い</title>
-        <meta name="description" content="スマスイの大会入力依頼リンクです。アプリを開くか、ストアからダウンロードしてください。">
+        <title>スマート片付け | 依頼内容の確認</title>
+        <meta name="description" content="スマート片付けの依頼確認リンクです。アプリを開くか、ストアからダウンロードしてください。">
         <link rel="icon" type="image/svg+xml" href="/icon.svg">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;family=Quicksand:wght@600;700&amp;display=swap" rel="stylesheet">
         <style>
       * {
         box-sizing: border-box;
@@ -123,20 +123,20 @@
     </head>
     <body>
         <main class="card">
-            <div class="logo">スマスイ</div>
-            <h1>大会入力のお願い</h1>
+            <div class="logo">スマート片付け</div>
+            <h1>依頼内容の確認</h1>
             <p>このリンクからアプリが起動します。アプリが未インストールの場合はストアからダウンロードしてください。</p>
             <div class="details" id="details">
                 <div>
-                    <strong>チーム名:</strong>
+                    <strong>スペース名:</strong>
                     <span id="team-id">-</span>
                 </div>
                 <div>
-                    <strong>大会名:</strong>
+                    <strong>依頼名:</strong>
                     <span id="competition-id">-</span>
                 </div>
                 <div>
-                    <strong>アクション:</strong>
+                    <strong>種別:</strong>
                     <span id="action">-</span>
                 </div>
             </div>
@@ -145,7 +145,7 @@
                 <a class="button button-secondary" href="https://apps.apple.com/jp/app/%E3%82%B9%E3%83%9E%E3%82%B9%E3%82%A4/id6756019486">App Storeでダウンロード</a>
                 <a class="button button-secondary" href="https://play.google.com/store/apps/details?id=jp.smartswim.app">Google Playでダウンロード</a>
             </div>
-            <div class="note">ヒント: アプリがインストール済みなら通常は自動で起動します。</div>
+            <div class="note">ヒント: アプリがインストール済みなら、通常は該当の依頼内容が自動で開きます。</div>
         </main>
         <script>
       const params = new URLSearchParams(window.location.search);
@@ -157,9 +157,9 @@
       const action = params.get('action') || 'goal';
 
       const resolvedActionLabel = actionLabel || (action === 'goal'
-        ? '大会目標'
+        ? '作業依頼'
         : action === 'result'
-          ? '大会結果'
+          ? '作業完了報告'
           : '-');
 
       document.getElementById('team-id').textContent = teamName || teamId || '-';

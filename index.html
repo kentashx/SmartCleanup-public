@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>スマスイ | 水泳と筋トレの練習メニュー・レース記録を一元管理</title>
+        <meta name="description" content="スマスイは、水泳と筋トレの練習を一括管理する水泳専用アプリです。AIコーチによる練習メニュー提案や振り返り、ワールドポイントの確認、フォームの動画比較など、マスターズやフィンスイミングに取り組む全てのスイマーの実力向上をサポートします。">
+        <meta name="keywords" content="スマスイ, 水泳アプリ, 筋トレ, 練習メニュー, 水泳記録管理, マスターズ水泳, フィンスイミング, AIコーチ, フォーム分析">
+        <!-- OGP Tags -->
+        <meta property="og:site_name" content="スマスイ - ">
+        <meta property="og:title" content="スマスイ | 水泳・筋トレの練習メニューと記録を一元管理するアプリ">
+        <meta property="og:description" content="AIコーチのサポートやレース動画比較など、水泳競技者のための便利機能が満載。スマスイで自己ベスト更新を目指そう！">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="/icon.png">
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="スマスイ | 水泳と筋トレの練習を一括管理">
+        <meta name="twitter:description" content="水泳と筋トレを、1つに。AIコーチのサポートやレース動画比較など、競技者のための便利機能が満載の練習管理アプリ。">
+        <meta name="twitter:image" content="/icon.png">
+        <link rel="icon" type="image/svg+xml" href="icon.svg">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+        <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --accent-color: #00ffff; /* Neon Cyan for water feel */
+            --accent-glow: rgba(0, 255, 255, 0.4);
+            --muted-color: #bbbbbb;
+            --surface-color: #111111;
+            --grid-color: rgba(255, 255, 255, 0.04);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Noto Sans JP', 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        body {
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Typography */
+        h1, h2, h3, .display-text {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .subtitle {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            font-weight: 700;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        p {
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            color: var(--muted-color);
+            max-width: 580px;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-link {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.6rem 1.8rem;
+            border: 2px solid #fff;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .nav-link:hover {
+            background-color: #fff;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding-top: 5rem;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 12vw, 10rem);
+            position: relative;
+            z-index: 2;
+            line-height: 1.05;
+        }
+
+        .hero h1 span {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .highlight {
+            color: var(--accent-color);
+            text-shadow: 0 0 40px var(--accent-glow);
+        }
+
+        .hero-images {
+            position: absolute;
+            top: 10%;
+            right: -5%;
+            width: 70%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            opacity: 0.8;
+            mask-image: linear-gradient(to right, transparent, black 40%);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 30%);
+        }
+
+        .hero-images img {
+            height: 90vh;
+            object-fit: contain;
+            transform: rotate(5deg) translateY(20px);
+            filter: drop-shadow(0 20px 50px rgba(0, 255, 255, 0.2)) brightness(1.1);
+            animation: floatHero 8s ease-in-out infinite;
+        }
+
+        @keyframes floatHero {
+            0% { transform: rotate(5deg) translateY(20px); }
+            50% { transform: rotate(2deg) translateY(-20px) scale(1.02); }
+            100% { transform: rotate(5deg) translateY(20px); }
+        }
+
+        /* Sections */
+        .section {
+            padding: 8rem 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .grid-layout.reverse {
+            direction: rtl;
+        }
+
+        .grid-layout.reverse > * {
+            direction: ltr;
+        }
+
+        .feature-images {
+            position: relative;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        .feature-img {
+            position: absolute;
+            max-width: 100%;
+            height: 110%;
+            object-fit: contain;
+            border-radius: 40px;
+            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.8));
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .feature-img.main {
+            z-index: 2;
+            transform: translateX(0) translateZ(50px);
+        }
+
+        .feature-img.secondary {
+            z-index: 1;
+            transform: translateX(-25%) scale(0.9) rotate(-6deg) translateZ(0);
+            opacity: 0.5;
+            filter: blur(4px) brightness(0.4);
+        }
+
+        .grid-layout.reverse .feature-img.secondary {
+            transform: translateX(25%) scale(0.9) rotate(6deg) translateZ(0);
+        }
+        
+        .grid-layout:hover .feature-img.main {
+            transform: translateX(10%) translateZ(80px) scale(1.05);
+        }
+        
+        .grid-layout:hover .feature-img.secondary {
+            transform: translateX(-35%) scale(0.95) rotate(-10deg) translateZ(0);
+            opacity: 0.8;
+            filter: blur(1px) brightness(0.7);
+        }
+
+        .grid-layout.reverse:hover .feature-img.main {
+            transform: translateX(-10%) translateZ(80px) scale(1.05);
+        }
+
+        .grid-layout.reverse:hover .feature-img.secondary {
+            transform: translateX(35%) scale(0.95) rotate(10deg) translateZ(0);
+            opacity: 0.8;
+            filter: blur(1px) brightness(0.7);
+        }
+
+        .feature-content ul {
+            list-style: none;
+            margin-top: 2.5rem;
+        }
+
+        .feature-content li {
+            font-size: 1.15rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: flex-start;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .feature-content li::before {
+            content: '■';
+            color: var(--accent-color);
+            margin-right: 1.2rem;
+            font-size: 0.9rem;
+            margin-top: 0.2rem;
+            text-shadow: 0 0 10px var(--accent-color);
+        }
+
+        /* Grid Background Pattern */
+        .grid-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .section-bg-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 12rem 0;
+            background: linear-gradient(180deg, transparent, rgba(0, 255, 255, 0.05), #050505);
+            position: relative;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-section p {
+            margin: 0 auto;
+            color: #fff;
+        }
+
+        .store-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+            flex-wrap: wrap;
+        }
+
+        .store-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem 3rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #000;
+            background: #fff;
+            border-radius: 100px;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .store-button.primary {
+            background: var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .store-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .store-button.primary:hover {
+            box-shadow: 0 20px 40px var(--accent-glow);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 5%;
+            color: var(--muted-color);
+            border-top: 1px solid var(--surface-color);
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.9rem;
+            background: #050505;
+        }
+
+        @media (max-width: 1024px) {
+            .grid-layout, .grid-layout.reverse {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 4rem;
+                direction: ltr;
+            }
+
+            .grid-layout.reverse > * {
+                direction: ltr;
+            }
+            
+            p {
+                margin: 0 auto;
+            }
+
+            .feature-images {
+                height: 500px;
+                order: -1;
+            }
+
+            .feature-content li {
+                text-align: left;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .hero-images {
+                opacity: 0.3;
+                right: -20%;
+                width: 100%;
+            }
+
+            .feature-img.secondary {
+                display: none;
+            }
+            
+            .feature-img.main {
+                transform: translateX(0);
+            }
+            
+            .grid-layout:hover .feature-img.main,
+            .grid-layout.reverse:hover .feature-img.main {
+                transform: scale(1.05);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero {
+                padding-top: 8rem;
+            }
+            .feature-images {
+                height: 400px;
+            }
+            .store-buttons {
+                flex-direction: column;
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <div class="grid-pattern"></div>
+        <header>
+            <a href="#" class="logo">スマスイ</a>
+            <a href="#download" class="nav-link">アプリを入手</a>
+        </header>
+        <main>
+            <!-- Hero Section -->
+            <section class="hero container">
+                <div class="hero-content reveal active">
+                    <span class="subtitle">水泳と筋トレを、1つに。</span>
+                    <h1>
+                        <span>泳ぐ。</span>
+                        <span>記録する。</span>
+                        <span class="highlight">超えていく。</span>
+                    </h1>
+                </div>
+                <div class="hero-images">
+                    <img src="features/スマスイ_スクショ_iphoneフレーム付き/1.png" alt="スマスイ App Hero Image">
+                </div>
+            </section>
+            <!-- Feature 1: Record & Manage -->
+            <section class="section container">
+                <div class="section-bg-glow"></div>
+                <div class="grid-layout reveal">
+                    <div class="feature-content">
+                        <span class="subtitle">1. 練習と記録の統合</span>
+                        <h2>練習と大会結果を
+                            <br>一括管理
+                        </h2>
+                        <p>水泳と筋トレの練習をアプリひとつでお手軽に。メニュー登録も簡単に行え、ワールドポイントやジャンボウポイントの確認に対応。公式大会・マスターズ大会やフィンスイミングまで幅広くサポートします。</p>
+                        <ul>
+                            <li>水泳と筋トレの練習を一元管理</li>
+                            <li>自分の記録のワールドポイント、ジャンボウポイントが確認可能</li>
+                            <li>テンプレートからの簡単登録と水着の管理機能</li>
+                        </ul>
+                    </div>
+                    <div class="feature-images">
+                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/1.png" alt="記録画面" class="feature-img main">
+                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/3.png" alt="メニュー登録画面" class="feature-img secondary">
+                    </div>
+                </div>
+            </section>
+            <!-- Feature 2: AI Coach -->
+            <section class="section container">
+                <div class="section-bg-glow" style="left: 20%;"></div>
+                <div class="grid-layout reverse reveal">
+                    <div class="feature-content">
+                        <span class="subtitle">2. AIコーチのサポート</span>
+                        <h2>目標へ導く
+                            <br>AIコーチ
+                        </h2>
+                        <p>専用のAIコーチが、あなたの目標に合わせた最適な練習メニューを提案。さらに、実施した練習内容に対して的確なフィードバックを提供し、日々の積み重ねを確かな実力へと変えていきます。</p>
+                        <ul>
+                            <li>AIコーチが目標に合った練習を自動提案</li>
+                            <li>毎回の練習に対する詳細なフィードバック</li>
+                            <li>常にモチベーションを高め、実力向上を支援</li>
+                        </ul>
+                    </div>
+                    <div class="feature-images">
+                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/10.png" alt="AIコーチ提案機能" class="feature-img main">
+                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/11.png" alt="AIフィードバック" class="feature-img secondary">
+                    </div>
+                </div>
+            </section>
+            <!-- Feature 3: Team -->
+            <section class="section container">
+                <div class="section-bg-glow" style="top: 30%;"></div>
+                <div class="grid-layout reveal">
+                    <div class="feature-content">
+                        <span class="subtitle">3. チームとフォーム分析</span>
+                        <h2>チーム機能と
+                            <br>動画比較
+                        </h2>
+                        <p>チーム内での練習管理やコミュニケーションがシームレスに行えます。また、レース動画を記録と一緒に管理し、複数動画を並列に並べて比較する機能（β版）で、フォームの細かな違いを分析できます。</p>
+                        <ul>
+                            <li>チーム内でのスムーズな練習管理とコミュニケーション</li>
+                            <li>レース動画を記録と紐付けて一元管理</li>
+                            <li>動画を並列で比較してフォームを確認（β版）</li>
+                        </ul>
+                    </div>
+                    <div class="feature-images">
+                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/8.png" alt="チーム内コミュニケーション機能" class="feature-img main">
+                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/12.png" alt="レース動画の並列比較" class="feature-img secondary">
+                    </div>
+                </div>
+            </section>
+            <!-- Feature 4: Analysis -->
+            <section class="section container">
+                <div class="section-bg-glow" style="left: 80%; top: 40%;"></div>
+                <div class="grid-layout reverse reveal">
+                    <div class="feature-content">
+                        <span class="subtitle">4. 成長の可視化と分析</span>
+                        <h2>データで見る
+                            <br>詳細な分析
+                        </h2>
+                        <p>練習距離や負荷量の推移をグラフで視覚的に確認。種目毎のポイントもレーダーチャートで把握できるため、自分の強みと課題が明確になり、日本縦断を目指すモチベーションへも繋がります。</p>
+                        <ul>
+                            <li>練習距離、負荷量の推移をグラフで簡単確認</li>
+                            <li>種目毎のポイントを直感的なレーダーチャートで分析</li>
+                            <li>累計距離からランクを確認。目指せ、日本縦断！</li>
+                        </ul>
+                    </div>
+                    <div class="feature-images">
+                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/4.png" alt="推移グラフ" class="feature-img main">
+                        <img src="features/スマスイ_スクショ_iphoneフレーム付き/6.png" alt="レーダーチャート" class="feature-img secondary">
+                    </div>
+                </div>
+            </section>
+            <!-- CTA Section -->
+            <section id="download" class="cta-section container reveal">
+                <h2>さあ、始めよう。</h2>
+                <p>スマスイで、自己ベスト更新のための習慣を身につけましょう。</p>
+                <div class="store-buttons">
+                    <a href="https://apps.apple.com/jp/app/%E3%82%B9%E3%83%9E%E3%82%B9%E3%82%A4/id6756019486" class="store-button primary">App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=jp.smartswim.app" class="store-button">Google Play</a>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2026 スマスイ - . All rights reserved.</p>
+        </footer>
+        <script>
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 150;
+
+            revealElements.forEach((element) => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        // Initialize scroll listener
+        window.addEventListener('scroll', revealOnScroll);
+        
+        // Trigger once on load with a slight delay to ensure rendering
+        setTimeout(revealOnScroll, 100);
+        </script>
+    </body>
+</html>

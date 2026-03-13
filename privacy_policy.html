@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>スマスイ プライバシーポリシー</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+        <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #06b6d4;
+            --accent-color: #f97316;
+            --dark-color: #1e3a5f;
+            --light-color: #f0f7ff;
+            --surface-color: rgba(255, 255, 255, 0.92);
+            --text-color: #1e293b;
+            --text-light: #475569;
+            --bg-gradient: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+        }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.75;
+            margin: 0;
+            padding: 32px 16px 48px;
+            background: var(--bg-gradient);
+            color: var(--text-color);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(37, 99, 235, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 75% 75%, rgba(6, 182, 212, 0.04) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--surface-color);
+            padding: 44px 42px;
+            border-radius: 22px;
+            box-shadow:
+                0 22px 60px rgba(30, 58, 95, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(18px);
+        }
+
+        h1 {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--primary-color);
+            border-bottom: 3px solid rgba(37, 99, 235, 0.2);
+            padding-bottom: 12px;
+            margin-bottom: 28px;
+            letter-spacing: 0.01em;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 14px;
+            font-weight: 700;
+        }
+
+        p, li {
+            color: var(--text-light);
+            line-height: 1.75;
+            word-break: break-word;
+        }
+
+        .intro {
+            margin-bottom: 30px;
+            padding: 18px 20px;
+            background-color: rgba(37, 99, 235, 0.08);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 12px;
+            color: var(--text-color);
+        }
+
+        ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 28px;
+        }
+
+        .contact {
+            margin-top: 38px;
+            padding: 20px;
+            background-color: rgba(240, 247, 255, 0.85);
+            border-radius: 14px;
+            border: 1px solid rgba(37, 99, 235, 0.08);
+            box-shadow: 0 10px 24px rgba(30, 58, 95, 0.08);
+        }
+
+        .contact a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        .appendix {
+            margin-top: 30px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(30, 58, 95, 0.12);
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 20px 14px 32px;
+            }
+
+            .container {
+                padding: 28px 22px;
+                border-radius: 16px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🏊‍♂️ スマスイ プライバシーポリシー</h1>
+            <div class="intro">
+                <p>スマスイ運営者（以下「運営者」といいます。）は、スマートフォンアプリ「スマスイ」（以下「本アプリ」といいます。）におけるユーザーの個人情報を適切に取り扱うため、以下の方針を定めます。</p>
+            </div>
+            <div class="section">
+                <h2>第1条（収集する情報）</h2>
+                <p>本アプリでは、以下の情報を取得する場合があります。</p>
+                <ul>
+                    <li>メールアドレス、ニックネーム、認証情報（Supabase認証）</li>
+                    <li>練習記録、タイム、メニュー内容、体調・筋トレ情報などの入力データ</li>
+                    <li>端末情報、アクセスログ、エラーログ、利用統計データ</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h2>第2条（利用目的）</h2>
+                <p>運営者は、取得した情報を以下の目的で利用します。</p>
+                <ol>
+                    <li>アプリ機能の提供・運営・改善</li>
+                    <li>データの分析・可視化・統計処理</li>
+                    <li>不正利用の防止およびセキュリティ確保</li>
+                    <li>お問い合わせ対応や通知の配信</li>
+                    <li>
+                        <strong>AIモデルの学習・性能改善・新機能開発のための利用</strong>
+                        <ul>
+                            <li>利用されるデータは、匿名化・集約化・統計化された形式で扱います。</li>
+                            <li>ユーザー個人を特定する情報はAIモデルに直接使用しません。</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            <div class="section">
+                <h2>第3条（第三者提供）</h2>
+                <p>運営者は、法令に基づく場合を除き、ユーザーの個人情報を第三者に提供しません。</p>
+                <p>ただし、AI学習等を行う委託先に対して、匿名化・統計化されたデータを提供する場合があります。</p>
+            </div>
+            <div class="section">
+                <h2>第4条（AIモデルの学習について）</h2>
+                <ol>
+                    <li>運営者は、ユーザーが登録したデータを匿名化した上で、AIモデルの精度向上・アルゴリズムの改善等に利用することがあります。</li>
+                    <li>学習に使用するデータには、ユーザーの個人情報（メールアドレスや特定可能なメモなど）は含まれません。</li>
+                    <li>AIモデルの学習結果は、再識別不可能な形でシステム改善に反映されます。</li>
+                </ol>
+            </div>
+            <div class="section">
+                <h2>第5条（外部サービスの利用）</h2>
+                <p>本アプリでは、データの保存・配信・解析・メール送信などの機能を実現するため、外部サービスを利用しています。</p>
+                <p>これらのサービス提供者がユーザー情報を取り扱う場合がありますが、運営者はこれらの事業者に対して適切な管理・監督を行います。</p>
+            </div>
+            <div class="section">
+                <h2>第6条（安全管理）</h2>
+                <p>運営者は、個人情報の保護に関する法律その他関連法令を遵守し、個人情報の漏えい・改ざん・不正アクセスを防止するため、適切なセキュリティ対策を講じます。</p>
+            </div>
+            <div class="section">
+                <h2>第7条（ユーザーの権利）</h2>
+                <p>ユーザーは、登録情報の閲覧・訂正・削除・退会を行うことができます。</p>
+                <p>退会時には関連データを削除しますが、統計的・匿名化されたデータは研究目的で継続利用される場合があります。</p>
+            </div>
+            <div class="section">
+                <h2>第8条（プライバシーポリシーの変更）</h2>
+                <p>運営者は、必要に応じて本ポリシーを変更できます。</p>
+                <p>変更後は本アプリまたはウェブサイト上で通知します。</p>
+            </div>
+            <div class="section">
+                <h2>第9条（お問い合わせ）</h2>
+                <div class="contact">
+                    <p>本ポリシーに関するお問い合わせは、以下のメールアドレスまでご連絡ください。</p>
+                    <p>
+                        <strong>📩 スマスイ運営者</strong>
+                    </p>
+                    <p>E-mail：
+                        <a href="mailto:contact@smaswi.com">contact@smaswi.com</a>
+                    </p>
+                </div>
+            </div>
+            <div class="appendix">
+                <p>
+                    <strong>附則</strong>
+                </p>
+                <p>本プライバシーポリシーは、2025年10月6日より施行します。</p>
+            </div>
+        </div>
+    </body>
+</html>

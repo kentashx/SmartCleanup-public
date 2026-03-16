@@ -9,19 +9,26 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;family=Quicksand:wght@500;600;700&amp;display=swap" rel="stylesheet">
         <style>
         :root {
-            --primary-color: #B8860B;
-            --secondary-color: #D4AF37;
-            --accent-color: #E91E8C;
-            --dark-color: #5C4500;
-            --light-color: #FFF9E6;
-            --surface-color: rgba(255, 255, 255, 0.94);
-            --text-color: #2d1e00;
-            --text-light: #5a4a2a;
-            --bg-gradient: linear-gradient(135deg, #FFF9E6 0%, #FFF0C0 50%, #FFE4B5 100%);
+            --color-bg-primary: #0e0608;
+            --color-bg-surface: #f0ece6;
+            --color-gold-light: #f7d878;
+            --color-gold-mid: #e8b84b;
+            --color-gold-dark: #c9922a;
+            --color-pink-light: #f0a0b8;
+            --color-pink-dark: #c04870;
+            --primary-color: var(--color-gold-dark);
+            --secondary-color: var(--color-gold-mid);
+            --accent-color: var(--color-pink-dark);
+            --dark-color: #633806;
+            --light-color: #f5f2ee;
+            --surface-color: rgba(240, 236, 230, 0.98);
+            --text-color: #0e0608;
+            --text-light: #666;
+            --bg-gradient: linear-gradient(135deg, #f5f2ee 0%, #f0ece6 50%, #e8e4de 100%);
         }
 
         body {
-            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Nunito', 'Hiragino Sans', 'Yu Gothic', sans-serif;
             line-height: 1.75;
             margin: 0;
             padding: 32px 16px 48px;
@@ -36,8 +43,8 @@
             position: fixed;
             inset: 0;
             background-image:
-                radial-gradient(circle at 25% 25%, rgba(184, 134, 11, 0.07) 0%, transparent 40%),
-                radial-gradient(circle at 75% 75%, rgba(233, 30, 140, 0.05) 0%, transparent 40%);
+                radial-gradient(circle at 25% 25%, rgba(201, 146, 42, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 75% 75%, rgba(192, 72, 112, 0.04) 0%, transparent 40%);
             pointer-events: none;
             z-index: -1;
         }
@@ -49,16 +56,16 @@
             padding: 44px 42px;
             border-radius: 22px;
             box-shadow:
-                0 22px 60px rgba(184, 134, 11, 0.12),
-                inset 0 1px 0 rgba(255, 255, 255, 0.55);
-            border: 1px solid rgba(212, 175, 55, 0.35);
+                0 22px 60px rgba(14, 6, 8, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(201, 146, 42, 0.2);
             backdrop-filter: blur(18px);
         }
 
         h1 {
             font-family: 'Quicksand', sans-serif;
-            color: var(--primary-color);
-            border-bottom: 3px solid rgba(212, 175, 55, 0.4);
+            color: var(--color-gold-dark);
+            border-bottom: 3px solid rgba(201, 146, 42, 0.4);
             padding-bottom: 12px;
             margin-bottom: 28px;
             letter-spacing: 0.01em;
@@ -67,7 +74,7 @@
 
         h2 {
             font-family: 'Quicksand', sans-serif;
-            color: var(--primary-color);
+            color: var(--color-gold-dark);
             margin-top: 30px;
             margin-bottom: 14px;
             font-weight: 700;
@@ -82,8 +89,8 @@
         .intro {
             margin-bottom: 30px;
             padding: 18px 20px;
-            background-color: rgba(184, 134, 11, 0.07);
-            border-left: 4px solid var(--primary-color);
+            background-color: rgba(247, 216, 120, 0.15);
+            border-left: 4px solid var(--color-gold-dark);
             border-radius: 12px;
             color: var(--text-color);
         }
@@ -103,14 +110,14 @@
         .contact {
             margin-top: 38px;
             padding: 20px;
-            background-color: rgba(255, 249, 230, 0.9);
+            background-color: rgba(240, 236, 230, 0.95);
             border-radius: 14px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 10px 24px rgba(184, 134, 11, 0.08);
+            border: 1px solid rgba(201, 146, 42, 0.2);
+            box-shadow: 0 10px 24px rgba(14, 6, 8, 0.06);
         }
 
         .contact a {
-            color: var(--primary-color);
+            color: var(--color-gold-dark);
             text-decoration: none;
             font-weight: 600;
         }
@@ -122,7 +129,7 @@
         .appendix {
             margin-top: 30px;
             padding-top: 18px;
-            border-top: 1px solid rgba(212, 175, 55, 0.25);
+            border-top: 1px solid rgba(201, 146, 42, 0.25);
             font-size: 14px;
             color: var(--text-light);
         }

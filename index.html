@@ -1,999 +1,396 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>スマート片付け | 撮るだけで登録、迷わずしまえて見つかる片付けアプリ</title>
-        <meta name="description" content="スマート片付けは、画像解析による自動登録、収納場所レコメンド、あいまい検索、収納情報の最新化を備えた片付けアプリです。登録の面倒、どこにしまうか迷う悩み、検索で見つからない不便、古い収納情報から解放します。">
-        <meta name="keywords" content="スマート片付け, 片付けアプリ, 画像解析, 収納場所レコメンド, あいまい検索, 収納管理, 整理整頓, 在庫管理">
-        <meta property="og:site_name" content="スマート片付け">
-        <meta property="og:title" content="スマート片付け | 撮るだけで登録、迷わずしまえて見つかる片付けアプリ">
-        <meta property="og:description" content="画像解析による自動登録、収納場所レコメンド、あいまい検索、収納情報の最新化で片付けを仕組み化。">
-        <meta property="og:type" content="website">
-        <meta property="og:image" content="/icon.png">
-        <meta name="twitter:card" content="summary">
-        <meta name="twitter:title" content="スマート片付け | 撮るだけで登録、迷わずしまえて見つかる片付けアプリ">
-        <meta name="twitter:description" content="画像解析、自動登録、収納提案、あいまい検索、最新化をひとつに。">
-        <meta name="twitter:image" content="/icon.png">
-        <link rel="icon" type="image/svg+xml" href="icon.svg">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
-        <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スマート片付け | スマホで撮るだけ。AIが手伝うお片付け</title>
+    <meta name="description" content="画像解析で自動登録、収納場所レコメンド、あいまい検索。スマート片付けは、スマホで撮るだけでAIが片付けを手伝ってくれるアプリです。">
+    <meta property="og:site_name" content="スマート片付け">
+    <meta property="og:title" content="スマート片付け | スマホで撮るだけ。AIが手伝うお片付け">
+    <meta property="og:description" content="画像解析、収納場所レコメンド、あいまい検索、最新化で片付けを仕組み化。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/icon.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="スマート片付け">
+    <meta name="twitter:description" content="画像解析、収納提案、あいまい検索、最新化をひとつに。">
+    <meta name="twitter:image" content="/icon.png">
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
         :root {
-            --color-bg-primary: #0e0608;
-            --color-bg-surface: #f0ece6;
-            --color-bg-card: #1e1014;
-            --color-gold-light: #f7d878;
-            --color-gold-mid: #e8b84b;
-            --color-gold-dark: #c9922a;
-            --color-pink-light: #f0a0b8;
-            --color-pink-dark: #c04870;
-            --color-text-primary: #f0ece6;
-            --color-text-secondary: #888888;
-            --bg: #f5f2ee;
-            --paper: rgba(240, 236, 230, 0.85);
-            --paper-strong: #f0ece6;
-            --ink: #0e0608;
-            --muted: #666;
-            --line: rgba(14, 6, 8, 0.1);
-            --accent: #e0dbd3;
-            --accent-soft: rgba(247, 216, 120, 0.25);
-            --accent-strong: #c9922a;
-            --shadow: 0 28px 60px rgba(14, 6, 8, 0.1);
+            /* ブランドカラーガイド準拠 */
+            --color-bg-primary:     #0e0608;   /* ディープブラック */
+            --color-bg-surface:     #f0ece6;   /* ホワイト大理石 */
+            --color-bg-card:        #1e1014;   /* ダークカード */
+
+            --color-gold-light:     #f7d878;   /* 明 */
+            --color-gold-mid:       #e8b84b;   /* 中 */
+            --color-gold-dark:      #c9922a;   /* 暗 */
+
+            --color-pink-light:     #f0a0b8;   /* 明 */
+            --color-pink-dark:      #c04870;   /* 暗 */
+
+            --color-text-primary:   #f0ece6;   /* on ダーク背景 */
+            --color-text-secondary: #888888;   /* サブ */
+            
+            --color-page-bg:        #f5f2ee;   /* ライトページ背景 */
+            
+            --ai-gradient: linear-gradient(135deg, var(--color-gold-light), var(--color-gold-dark));
+            --ai-gradient-pink: linear-gradient(135deg, var(--color-pink-light), var(--color-pink-dark));
+            
+            --border-radius-lg: 32px;
+            --shadow-subtle: 0 12px 30px rgba(14, 6, 8, 0.05);
+            --shadow-float: 0 20px 40px rgba(14, 6, 8, 0.08);
+            --border-color: #e0dbd3;
         }
 
-        html {
-            scroll-behavior: smooth;
-            background:
-                radial-gradient(circle at top left, rgba(247, 216, 120, 0.08), transparent 30%),
-                radial-gradient(circle at 85% 20%, rgba(192, 72, 112, 0.05), transparent 28%),
-                linear-gradient(180deg, #f5f2ee 0%, #f0ece6 45%, #e8e4de 100%);
-            color: var(--ink);
-            overflow-x: hidden;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Zen Kaku Gothic New', sans-serif;
+            font-family: 'Zen Maru Gothic', sans-serif;
+            background-color: var(--color-page-bg);
+            color: var(--color-bg-primary);
             line-height: 1.7;
             overflow-x: hidden;
         }
 
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(14, 6, 8, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(14, 6, 8, 0.04) 1px, transparent 1px);
-            background-size: 48px 48px;
-            pointer-events: none;
-            z-index: -2;
+        /* 改行コントロール */
+        .nowrap { display: inline-block; white-space: nowrap; }
+        .pc-only { display: block; }
+        .sp-only { display: none; }
+        @media (max-width: 768px) {
+            .pc-only { display: none; }
+            .sp-only { display: inline-block; }
         }
 
-        .container {
-            width: min(1180px, calc(100% - 40px));
-            margin: 0 auto;
-        }
+        .container { width: min(1080px, 100% - 40px); margin: 0 auto; }
 
+        /* ヘッダー (ディープブラック) */
         header {
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            backdrop-filter: blur(18px);
-            background: rgba(240, 236, 230, 0.85);
-            border-bottom: 1px solid rgba(14, 6, 8, 0.08);
+            position: sticky; top: 0; 
+            background: rgba(14, 6, 8, 0.95); 
+            backdrop-filter: blur(12px);
+            z-index: 100;
         }
-
-        .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 0;
+        .header-inner { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo { font-weight: 900; font-size: 1.3rem; color: var(--color-gold-light); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .logo::before { content: '✨'; font-size: 1.1rem; }
+        
+        .nav-btn { 
+            background: var(--ai-gradient); 
+            color: #111; text-decoration: none; 
+            padding: 10px 24px; border-radius: 999px; 
+            font-weight: 700; transition: all 0.2s; 
         }
+        .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(247, 216, 120, 0.3); }
 
-        .logo {
-            color: var(--ink);
-            text-decoration: none;
-            font-family: 'Sora', sans-serif;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            font-size: 1.1rem;
+        section { padding: 80px 0; }
+        
+        /* ヒーローセクション */
+        .hero { padding: 60px 0 100px; }
+        .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
+        
+        .hero-chatter { 
+            background: rgba(247, 216, 120, 0.2); 
+            display: inline-flex; align-items: center; padding: 8px 16px; border-radius: 999px; 
+            font-weight: 700; color: var(--color-gold-dark); margin-bottom: 24px; gap: 8px; 
+            border: 1px solid rgba(247, 216, 120, 0.4);
         }
-
-        .nav-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 18px;
-            border-radius: 999px;
-            text-decoration: none;
-            border: 1px solid var(--line);
-            color: var(--ink);
-            font-weight: 700;
-            background: rgba(246, 249, 253, 0.62);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        
+        .hero h1 { 
+            font-size: clamp(2.4rem, 4.5vw, 3.6rem); 
+            line-height: 1.4; font-weight: 900; 
+            color: var(--color-bg-primary); 
+            margin-bottom: 24px; 
         }
-
-        .nav-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(201, 146, 42, 0.15);
-        }
-
-        .hero {
-            padding: 72px 0 56px;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.08fr 0.92fr;
-            gap: 42px;
-            align-items: center;
-        }
-
-        .eyebrow,
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 12px;
-            border-radius: 999px;
-            background: rgba(247, 216, 120, 0.2);
-            border: 1px solid rgba(201, 146, 42, 0.25);
-            color: var(--color-gold-dark);
-            font-weight: 700;
-            font-size: 0.88rem;
-            letter-spacing: 0.06em;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 6.6rem);
-            line-height: 1.04;
-            margin-top: 18px;
-            letter-spacing: -0.04em;
-            font-weight: 900;
-        }
-
-        .hero h1 .accent {
-            background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero h1 span.ai-text { 
+            background: var(--ai-gradient); 
+            -webkit-background-clip: text; 
             background-clip: text;
+            -webkit-text-fill-color: transparent; 
         }
-
-        .hero p {
-            margin-top: 22px;
-            max-width: 34rem;
-            color: var(--muted);
-            font-size: clamp(1rem, 2.1vw, 1.16rem);
+        .hero p { font-size: 1.1rem; color: #555; margin-bottom: 40px; }
+        
+        .hero-visual { position: relative; display: flex; flex-direction: column; align-items: center; }
+        
+        .chat-bubble { 
+            background: var(--color-bg-surface); padding: 20px 24px; border-radius: 28px 28px 28px 4px; 
+            box-shadow: var(--shadow-float); display: flex; gap: 16px; align-items: flex-start; max-width: 440px; 
+            animation: float 4s ease-in-out infinite; border: 1px solid var(--border-color);
         }
-
-        .cta-row {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin-top: 28px;
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 52px;
-            padding: 0 22px;
-            border-radius: 999px;
-            text-decoration: none;
-            font-weight: 800;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-        }
-
-        .button-primary {
-            color: #111;
-            background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold-dark));
-            box-shadow: 0 18px 34px rgba(201, 146, 42, 0.25);
-        }
-
-        .button-secondary {
-            color: var(--ink);
-            background: rgba(240, 236, 230, 0.9);
-            border: 1px solid rgba(201, 146, 42, 0.35);
-        }
-
-        .button:hover {
-            transform: translateY(-2px);
-        }
-
-        .hero-points {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 14px;
-            margin-top: 34px;
-        }
-
-        .point-card {
-            padding: 16px;
-            border-radius: 20px;
-            background: rgba(240, 236, 230, 0.9);
-            border: 1px solid rgba(224, 219, 211, 0.8);
-            box-shadow: 0 12px 24px rgba(14, 6, 8, 0.06);
-        }
-
-        .point-card strong {
-            display: block;
-            font-family: 'Sora', sans-serif;
-            font-size: 1.45rem;
-            color: var(--accent-strong);
-        }
-
-        .point-card span {
-            display: block;
-            margin-top: 4px;
-            color: var(--muted);
-            font-size: 0.92rem;
-        }
-
-        .hero-visual {
-            position: relative;
-            min-height: 620px;
-        }
-
-        .orb {
-            position: absolute;
-            border-radius: 999px;
-            filter: blur(6px);
-        }
-
-        .orb.one {
-            inset: 18px auto auto 24px;
-            width: 220px;
-            height: 220px;
-            background: rgba(247, 216, 120, 0.25);
-        }
-
-        .orb.two {
-            inset: auto 10px 48px auto;
-            width: 190px;
-            height: 190px;
-            background: rgba(192, 72, 112, 0.12);
-        }
-
-        .dashboard {
-            position: relative;
-            z-index: 1;
-            margin: 32px auto 0;
-            width: min(100%, 470px);
-            border-radius: 34px;
-            padding: 22px;
-            background: rgba(240, 236, 230, 0.95);
-            border: 1px solid rgba(224, 219, 211, 0.9);
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(18px);
-            transform: rotate(2deg);
-        }
-
-        .dashboard-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 18px;
-        }
-
-        .dashboard-title {
-            font-family: 'Sora', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        .mini-badge {
-            padding: 7px 10px;
-            border-radius: 999px;
-            background: var(--accent-soft);
-            color: var(--accent-strong);
-            font-size: 0.8rem;
-            font-weight: 800;
-        }
-
-        .dashboard-grid {
-            display: grid;
-            gap: 14px;
-        }
-
-        .panel {
-            border-radius: 24px;
-            padding: 18px;
-            background: var(--paper-strong);
-            border: 1px solid rgba(14, 6, 8, 0.08);
-        }
-
-        .task-row,
-        .storage-row,
-        .family-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-
-        .task-row + .task-row,
-        .storage-row + .storage-row,
-        .family-row + .family-row {
-            margin-top: 12px;
-        }
-
-        .task-label,
-        .storage-label,
-        .family-label {
-            color: var(--ink);
-            font-weight: 700;
-        }
-
-        .task-meta,
-        .storage-meta,
-        .family-meta {
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        .check {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            background: rgba(247, 216, 120, 0.4);
-            color: var(--color-gold-dark);
-            font-weight: 900;
-            flex-shrink: 0;
-        }
-
-        .meter {
-            height: 12px;
-            border-radius: 999px;
-            background: rgba(224, 219, 211, 0.8);
-            overflow: hidden;
-            margin-top: 14px;
-        }
-
-        .meter span {
-            display: block;
-            height: 100%;
-            width: 68%;
-            border-radius: 999px;
-            background: linear-gradient(90deg, var(--color-gold-light), var(--color-gold-dark));
-        }
-
-        .floating-note {
-            position: absolute;
+        .chat-bubble.right { 
+            border-radius: 28px 28px 4px 28px; flex-direction: row-reverse; 
+            background: #fff; align-self: flex-end; margin-left: auto; margin-top: 24px; 
+            animation-delay: 1s; box-shadow: 0 12px 30px rgba(192, 72, 112, 0.08); 
+            border: 1px solid var(--color-pink-light);
             z-index: 2;
-            max-width: 220px;
-            padding: 16px 18px;
-            border-radius: 22px;
-            background: rgba(240, 236, 230, 0.95);
-            border: 1px solid rgba(201, 146, 42, 0.15);
-            box-shadow: 0 18px 32px rgba(14, 6, 8, 0.08);
-            backdrop-filter: blur(14px);
+        }
+        .avatar { 
+            width: 48px; height: 48px; border-radius: 50%; 
+            background: var(--ai-gradient); display: flex; align-items: center; justify-content: center; 
+            color: #111; font-size: 20px; flex-shrink: 0; box-shadow: 0 4px 12px rgba(247, 216, 120, 0.3); 
+        }
+        .avatar.user { 
+            background: var(--color-bg-surface); border: 2px solid var(--color-pink-light); 
+            color: var(--color-pink-dark); font-size: 20px; box-shadow: none; 
+        }
+        .chat-text { font-size: 1.05rem; font-weight: 500; color: var(--color-bg-primary); }
+        .chat-text strong { display: block; margin-bottom: 4px; font-size: 0.95rem; color: #555; }
+        
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
+        
+        /* ヒーローのAIイメージ */
+        .hero-img { 
+            position: absolute; right: -40px; top: 50%; transform: translateY(-50%); 
+            width: 320px; height: 320px; object-fit: cover; border-radius: 50%; z-index: -1; opacity: 0.6; 
+            mask-image: radial-gradient(white, black); -webkit-mask-image: radial-gradient(white, black); 
         }
 
-        .floating-note.top {
-            top: 10px;
-            right: 0;
-        }
+        /* 特徴セクション */
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: clamp(2rem, 3.5vw, 2.6rem); font-weight: 900; margin-bottom: 16px; line-height: 1.4; color: var(--color-bg-primary); }
+        .section-header p { color: #555; font-size: 1.1rem; }
 
-        .floating-note.bottom {
-            bottom: 20px;
-            left: 0;
+        .feature-grid { display: grid; gap: 40px; }
+        
+        /* カード背景はホワイト大理石 */
+        .feature-row { 
+            display: flex; align-items: center; gap: 60px; 
+            background: var(--color-bg-surface); padding: 40px; 
+            border-radius: var(--border-radius-lg); box-shadow: var(--shadow-subtle); 
+            border: 1px solid var(--border-color); 
         }
+        .feature-row:nth-child(even) { flex-direction: row-reverse; }
 
-        .floating-note strong {
-            display: block;
-            margin-bottom: 6px;
-            color: var(--ink);
-        }
-
-        .floating-note p {
-            color: var(--muted);
-            font-size: 0.92rem;
-            line-height: 1.6;
-        }
-
-        section {
-            padding: 44px 0;
-        }
-
-        .section-head {
+        /* 生の画面スクショを収めるためのスマホフレームUI */
+        .phone-mockup { 
+            width: 260px; 
+            border: 8px solid var(--color-bg-primary); /* ディープブラックの枠 */
+            border-radius: 36px; 
+            overflow: hidden; 
+            background: #000; 
+            box-shadow: 0 20px 40px rgba(14, 6, 8, 0.15); 
+            flex-shrink: 0; 
+            position: relative; 
+            aspect-ratio: 1170 / 2532; /* スマホ画面の比率を保持して自動調整 */
             display: flex;
-            justify-content: space-between;
-            gap: 24px;
-            align-items: end;
-            margin-bottom: 28px;
+        }
+        /* ノッチ部分の表現 */
+        .phone-mockup::before { 
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); 
+            width: 100px; height: 20px; background: var(--color-bg-primary); 
+            border-radius: 0 0 12px 12px; z-index: 10; 
+        }
+        .phone-mockup img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            border-radius: 28px; /* フレームの角丸に合わせる */
         }
 
-        h2 {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            line-height: 1.12;
-            letter-spacing: -0.03em;
+        .feature-content h3 { 
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem); font-weight: 900; 
+            color: var(--color-bg-primary); margin-bottom: 16px; 
+            display: flex; align-items: center; gap: 12px; flex-wrap: wrap; 
+        }
+        .feature-content h3 span { 
+            background: var(--ai-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; 
+            font-size: 1.1rem; font-weight: 900; 
+            background-color: rgba(247, 216, 120, 0.15); 
+            padding: 4px 12px; border-radius: 999px; 
+            border: 1px solid var(--color-gold-light); 
+        }
+        .feature-content h3 span.pink-badge { 
+            background: var(--ai-gradient-pink); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; 
+            background-color: rgba(240, 160, 184, 0.15); 
+            border: 1px solid var(--color-pink-light); 
+        }
+        .feature-content p { font-size: 1.1rem; color: #555; margin-bottom: 24px; }
+
+        /* 声のセクション */
+        .voice-section { 
+            background: var(--color-bg-surface); 
+            border-radius: var(--border-radius-lg); 
+            padding: 80px 40px; text-align: center; margin: 40px 0; 
+            border: 1px solid var(--border-color); 
+            border-top: 6px solid var(--color-pink-dark); /* ピンク系サブカラーの帯を導入 */
+            box-shadow: var(--shadow-subtle);
+        }
+        .voice-message { 
+            font-size: clamp(1.3rem, 2.5vw, 1.6rem); font-weight: 700; 
+            color: var(--color-bg-primary); max-width: 800px; margin: 0 auto; line-height: 1.8; 
         }
 
-        .section-copy {
-            color: var(--muted);
-            max-width: 34rem;
+        /* CTAセクション (ディープブラック) */
+        .cta-section { 
+            text-align: center; padding: 100px 0; 
+            background: var(--color-bg-primary); 
+            color: var(--color-text-primary); 
+            border-radius: 40px 40px 0 0; 
         }
-
-        .problem-grid,
-        .feature-grid,
-        .flow-grid,
-        .voice-grid {
-            display: grid;
-            gap: 18px;
+        .cta-section h2 { 
+            font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 900; 
+            line-height: 1.4; color: var(--color-gold-light); 
         }
-
-        .problem-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+        
+        .btn-large { 
+            display: inline-flex; align-items: center; justify-content: center; 
+            background: var(--ai-gradient); color: #111; 
+            font-size: 1.2rem; font-weight: 700; padding: 20px 48px; border-radius: 999px; 
+            text-decoration: none; box-shadow: 0 16px 32px rgba(247, 216, 120, 0.25); transition: all 0.2s; 
         }
+        .btn-large:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(247, 216, 120, 0.4); }
 
-        .feature-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+        /* フッター */
+        footer { padding: 40px 0; text-align: center; color: var(--color-text-secondary); background: var(--color-bg-primary); }
+        footer a { color: var(--color-gold-light); text-decoration: none; margin: 0 12px; }
+
+        @media (max-width: 768px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-img { display: none; }
+            .feature-row { flex-direction: column !important; padding: 32px 24px; text-align: center; }
+            .phone-mockup { width: 220px; }
+            .feature-content h3 { justify-content: center; flex-wrap: wrap; }
+            /* スマホ時の段落も綺麗に改行させる */
+            .voice-section { padding: 40px 24px; }
         }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="/" class="logo">スマート片付け</a>
+            <a href="install/index.html" class="nav-btn">アプリをはじめる</a>
+        </div>
+    </header>
 
-        .flow-grid {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-
-        .voice-grid {
-            grid-template-columns: 1.2fr 0.8fr;
-            align-items: stretch;
-        }
-
-        .card {
-            padding: 24px;
-            border-radius: 28px;
-            background: rgba(240, 236, 230, 0.9);
-            border: 1px solid rgba(224, 219, 211, 0.8);
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(16px);
-        }
-
-        .card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-        }
-
-        .card p,
-        .card li {
-            color: var(--muted);
-        }
-
-        .problem-number,
-        .flow-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
-            margin-bottom: 16px;
-            font-family: 'Sora', sans-serif;
-            font-weight: 800;
-            background: var(--accent-soft);
-            color: var(--accent-strong);
-        }
-
-        .feature-card {
-            min-height: 250px;
-        }
-
-        .feature-list,
-        .voice-list {
-            margin-top: 16px;
-            list-style: none;
-            display: grid;
-            gap: 10px;
-        }
-
-        .feature-list li,
-        .voice-list li {
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .feature-list li::before,
-        .voice-list li::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 11px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--color-gold-dark);
-        }
-
-        .flow-card strong {
-            display: block;
-            margin-bottom: 10px;
-            color: var(--ink);
-        }
-
-        .quote {
-            font-size: clamp(1.35rem, 2.4vw, 2rem);
-            line-height: 1.6;
-            color: var(--ink);
-        }
-
-        .quote small {
-            display: block;
-            margin-top: 18px;
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
-
-        .mini-stats {
-            display: grid;
-            gap: 14px;
-        }
-
-        .mini-stat {
-            padding: 18px;
-            border-radius: 22px;
-            background: rgba(240, 236, 230, 0.9);
-            border: 1px solid rgba(201, 146, 42, 0.15);
-        }
-
-        .mini-stat strong {
-            display: block;
-            font-family: 'Sora', sans-serif;
-            font-size: 1.4rem;
-            color: var(--accent-strong);
-        }
-
-        .cta {
-            padding: 60px 0 90px;
-        }
-
-        .cta-box {
-            padding: 34px;
-            border-radius: 34px;
-            background: var(--color-bg-primary);
-            color: var(--color-text-primary);
-            box-shadow: 0 30px 50px rgba(14, 6, 8, 0.3);
-        }
-
-        .cta-box p {
-            color: rgba(240, 236, 230, 0.85);
-            margin-top: 12px;
-            max-width: 36rem;
-        }
-
-        .cta-box .cta-row {
-            margin-top: 24px;
-        }
-
-        .cta-box .button-primary {
-            background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold-dark));
-            color: #111;
-            box-shadow: none;
-        }
-
-        .cta-box .button-secondary {
-            border-color: var(--color-pink-dark);
-            color: var(--color-pink-light);
-            background: transparent;
-        }
-
-        footer {
-            padding: 0 0 48px;
-        }
-
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            gap: 16px;
-            align-items: center;
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--muted);
-            text-decoration: none;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(36px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (max-width: 960px) {
-            .hero-grid,
-            .problem-grid,
-            .feature-grid,
-            .flow-grid,
-            .voice-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-points {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .section-head,
-            .footer-inner {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .hero-visual {
-                min-height: auto;
-            }
-
-            .dashboard {
-                transform: none;
-            }
-
-            .floating-note {
-                position: static;
-                max-width: none;
-                margin-top: 14px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .container {
-                width: min(100% - 24px, 1180px);
-            }
-
-            .header-inner {
-                padding: 14px 0;
-            }
-
-            .hero {
-                padding-top: 40px;
-            }
-
-            .hero-points {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-box,
-            .card,
-            .dashboard {
-                padding: 22px;
-                border-radius: 24px;
-            }
-
-            .cta-row {
-                flex-direction: column;
-            }
-
-            .button {
-                width: 100%;
-            }
-        }
-        </style>
-    </head>
-    <body>
-        <header>
-            <div class="container header-inner">
-                <a href="/" class="logo">スマート片付け</a>
-                <a href="/install/" class="nav-link">アプリをはじめる</a>
-            </div>
-        </header>
-        <main>
-            <section class="hero">
-                <div class="container hero-grid">
-                    <div class="reveal active">
-                        <span class="eyebrow">画像解析とAIで片付けを軽くするアプリ</span>
-                        <h1>
-                            撮るだけで。
-                            <br>
-                            迷わずしまえて。
-                            <br>
-                            <span class="accent">あとから見つかる。</span>
-                        </h1>
-                        <p>スマート片付けは、画像解析による自動登録、収納場所レコメンド、あいまい検索、収納情報の最新化で、片付けの面倒と迷いを減らすアプリです。一個ずつ登録しなくても、何をすべきか分からなくても、あとで言葉が違っても、取り出した後に情報が古くなっても回ります。</p>
-                        <div class="cta-row">
-                            <a href="/install/" class="button button-primary">無料で始める</a>
-                            <a href="#features" class="button button-secondary">できることを見る</a>
-                        </div>
-                        <div class="hero-points">
-                            <div class="point-card">
-                                <strong>画像解析</strong>
-                                <span>撮るだけでアイテム候補をまとめて登録</span>
-                            </div>
-                            <div class="point-card">
-                                <strong>収納提案</strong>
-                                <span>何をどこへしまうかをアプリがレコメンド</span>
-                            </div>
-                            <div class="point-card">
-                                <strong>あいまい検索</strong>
-                                <span>登録時と違う言葉でも見つけやすい</span>
-                            </div>
-                            <div class="point-card">
-                                <strong>最新化</strong>
-                                <span>取り出した後の収納情報もすぐ更新</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero-visual reveal">
-                        <div class="orb one"></div>
-                        <div class="orb two"></div>
-                        <div class="floating-note top">
-                            <strong>画像追加が一気に終わる</strong>
-                            <p>箱の中身や棚の写真から候補を抽出。1個ずつ入力する手間を減らします。</p>
-                        </div>
-                        <div class="dashboard">
-                            <div class="dashboard-head">
-                                <div class="dashboard-title">スマート片付け AIボード</div>
-                                <div class="mini-badge">自動提案 4件</div>
-                            </div>
-                            <div class="dashboard-grid">
-                                <div class="panel">
-                                    <div class="task-row">
-                                        <div>
-                                            <div class="task-label">画像解析: 日用品を7件検出</div>
-                                            <div class="task-meta">洗面所の棚写真から自動候補化</div>
-                                        </div>
-                                        <div class="check">✓</div>
-                                    </div>
-                                    <div class="task-row">
-                                        <div>
-                                            <div class="task-label">旧タオル在庫をまとめて登録</div>
-                                            <div class="task-meta">確認だけで保存完了</div>
-                                        </div>
-                                        <div class="check">✓</div>
-                                    </div>
-                                    <div class="meter"><span></span></div>
-                                </div>
-                                <div class="panel">
-                                    <div class="storage-row">
-                                        <div>
-                                            <div class="storage-label">収納提案: 電池は工具ボックスへ</div>
-                                            <div class="storage-meta">使用頻度とカテゴリからレコメンド</div>
-                                        </div>
-                                        <div class="mini-badge">提案</div>
-                                    </div>
-                                    <div class="storage-row">
-                                        <div>
-                                            <div class="storage-label">検索: 「ネジ」でも「DIY部品」が出る</div>
-                                            <div class="storage-meta">昔の登録名と違ってもたどり着ける</div>
-                                        </div>
-                                        <div class="mini-badge">検索</div>
-                                    </div>
-                                </div>
-                                <div class="panel">
-                                    <div class="family-row">
-                                        <div>
-                                            <div class="family-label">最新化: ドライバーを取り出し済み</div>
-                                            <div class="family-meta">ワンタップで収納状況を更新</div>
-                                        </div>
-                                        <div class="check">更新</div>
-                                    </div>
-                                    <div class="family-row">
-                                        <div>
-                                            <div class="family-label">次の片付け候補も自動で整理</div>
-                                            <div class="family-meta">何をすれば良いか迷わない</div>
-                                        </div>
-                                        <div class="check">AI</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="floating-note bottom">
-                            <strong>古い情報を放置しない</strong>
-                            <p>物を取り出した瞬間に最新化。登録した収納情報がいつの間にか古くなる問題を防ぎます。</p>
-                        </div>
-                    </div>
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div>
+                    <div class="hero-chatter">😊 負担のないお片付けへ</div>
+                    <h1>
+                        <span class="nowrap">スマホで撮るだけ。</span><br>
+                        <span class="nowrap">あとは<span class="ai-text">AI</span>が</span><span class="nowrap">手伝う</span><wbr><span class="nowrap">お片付け。</span>
+                    </h1>
+                    <p>
+                        スマート片付けは、<span class="nowrap">あなたの代わりに</span><wbr><span class="nowrap">「どこにしまうか」を考え、</span><wbr><span class="nowrap">「何がどこにあるか」を覚えてくれる</span><wbr><span class="nowrap">優しいAIアシスタントです。</span>
+                    </p>
+                    <a href="install/index.html" class="btn-large">無料で始める</a>
                 </div>
-            </section>
-
-            <section class="reveal">
-                <div class="container">
-                    <div class="section-head">
-                        <div>
-                            <span class="section-label">解放される4つの悩み</span>
-                            <h2>片付けが面倒なのは、<br>作業が多すぎて情報が古くなるからです。</h2>
-                        </div>
-                        <p class="section-copy">登録が面倒、どこにしまえばいいか分からない、昔の登録名と違うと見つからない、取り出した後の情報が古くなる。スマート片付けは、この4つの詰まりをまとめて解消します。</p>
-                    </div>
-                    <div class="problem-grid">
-                        <article class="card">
-                            <div class="problem-number">01</div>
-                            <h3>一個ずつ登録するのが面倒</h3>
-                            <p>画像解析で複数アイテムを候補化。確認中心のフローに変わるので、登録作業の負担が一気に下がります。</p>
-                        </article>
-                        <article class="card">
-                            <div class="problem-number">02</div>
-                            <h3>何をすればいいか分からない</h3>
-                            <p>収納場所レコメンドで、アイテムの特性や使う場所に合わせたしまい先を提案します。</p>
-                        </article>
-                        <article class="card">
-                            <div class="problem-number">03</div>
-                            <h3>検索しても引っかからない</h3>
-                            <p>昔つけた名前と今思い出した言葉が違っても、あいまい検索で探しやすくなります。</p>
-                        </article>
-                        <article class="card">
-                            <div class="problem-number">04</div>
-                            <h3>収納情報がいつの間にか古い</h3>
-                            <p>取り出し後の状態を簡単に更新できるので、「登録してあるのに実物がない」を減らせます。</p>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <section id="features" class="reveal">
-                <div class="container">
-                    <div class="section-head">
-                        <div>
-                            <span class="section-label">肝となる4機能</span>
-                            <h2>片付けの面倒は、<br>4つの機能で軽くできます。</h2>
-                        </div>
-                        <p class="section-copy">このアプリケーションの価値は、登録、収納判断、検索、最新化の4点をそれぞれきちんと楽にすることにあります。</p>
-                    </div>
-                    <div class="feature-grid">
-                        <article class="card feature-card">
-                            <h3>1. 画像解析による画像追加</h3>
-                            <p>写真を起点にアイテム候補を抽出し、まとめて登録候補をつくります。一個一個入力する手間を減らす中核機能です。</p>
-                            <ul class="feature-list">
-                                <li>棚や箱の中身をまとめて候補化</li>
-                                <li>確認しながら短時間で登録完了</li>
-                                <li>登録漏れや入力負担を減らせる</li>
-                            </ul>
-                        </article>
-                        <article class="card feature-card">
-                            <h3>2. 収納場所レコメンド</h3>
-                            <p>片付けるときに「何をすればいいか分からない」を防ぐため、アイテムに合った収納場所や置き方を提案します。</p>
-                            <ul class="feature-list">
-                                <li>使用頻度やカテゴリに応じて提案</li>
-                                <li>迷いを減らして片付け開始が早い</li>
-                                <li>生活動線に合うしまい先を決めやすい</li>
-                            </ul>
-                        </article>
-                        <article class="card feature-card">
-                            <h3>3. あいまい検索</h3>
-                            <p>昔登録していた言葉と違っても、思い出した単語から見つけやすい検索体験を目指しています。</p>
-                            <ul class="feature-list">
-                                <li>登録名と検索語がずれても探しやすい</li>
-                                <li>カテゴリや関連語から候補を表示</li>
-                                <li>探し物のストレスを減らせる</li>
-                            </ul>
-                        </article>
-                        <article class="card feature-card">
-                            <h3>4. 場所タグ情報の最新化</h3>
-                            <p>物を取り出したあとも、場所タグにひもづく情報をすばやく更新。収納情報が古くなる問題を抑えます。</p>
-                            <ul class="feature-list">
-                                <li>取り出し後の状態をワンタップ更新</li>
-                                <li>在庫や収納状況を最新に保ちやすい</li>
-                                <li>家族で見ても情報がずれにくい</li>
-                            </ul>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <section class="reveal">
-                <div class="container">
-                    <div class="section-head">
-                        <div>
-                            <span class="section-label">使い方</span>
-                            <h2>使う流れも、<br>4ステップでシンプルです。</h2>
-                        </div>
-                        <p class="section-copy">撮る、提案を見る、検索する、更新する。この循環が回ると片付け情報が生きたまま保てます。</p>
-                    </div>
-                    <div class="flow-grid">
-                        <article class="card flow-card">
-                            <div class="flow-number">1</div>
-                            <strong>撮る</strong>
-                            <p>棚や箱の中身を撮影し、画像解析でアイテム候補をまとめて出します。</p>
-                        </article>
-                        <article class="card flow-card">
-                            <div class="flow-number">2</div>
-                            <strong>提案を見る</strong>
-                            <p>収納場所レコメンドを見ながら、どこにしまうかを迷わず決めます。</p>
-                        </article>
-                        <article class="card flow-card">
-                            <div class="flow-number">3</div>
-                            <strong>あとで検索する</strong>
-                            <p>登録時と違う言葉でも、思い出した単語からアイテムを探せます。</p>
-                        </article>
-                        <article class="card flow-card">
-                            <div class="flow-number">4</div>
-                            <strong>状態を更新する</strong>
-                            <p>物を取り出したら、場所タグの情報をすぐ最新化してズレを残しません。</p>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <section class="reveal">
-                <div class="container">
-                    <div class="section-head">
-                        <div>
-                            <span class="section-label">このLPで伝えたい価値</span>
-                            <h2>片付けを頑張るのではなく、<br>片付けの詰まりを消していく。</h2>
-                        </div>
-                        <p class="section-copy">登録の面倒、収納判断の迷い、検索の不一致、情報の陳腐化。この4つが減ると、片付けは一気に日常へ戻せます。</p>
-                    </div>
-                    <div class="voice-grid">
-                        <article class="card">
-                            <p class="quote">「登録が面倒だから続かない」を減らし、「どこにしまうか分からない」「検索しても見つからない」「情報が古い」をまとめて解決する。それがスマート片付けの価値です。</p>
-                            <small>片付け管理ではなく、片付けの詰まりをなくすための4機能を中心に設計しています。</small>
-                        </article>
-                        <div class="mini-stats">
-                            <article class="mini-stat">
-                                <strong>自動登録</strong>
-                                <span>画像解析で入力作業を短縮</span>
-                            </article>
-                            <article class="mini-stat">
-                                <strong>収納提案</strong>
-                                <span>次にやるべきことが分かる</span>
-                            </article>
-                            <article class="mini-stat">
-                                <strong>検索と更新</strong>
-                                <span>見つかる状態と最新状態を保てる</span>
-                            </article>
+                <div class="hero-visual">
+                    <img src="sceenshot/ai_assistant.png" alt="AI Assistant" class="hero-img" onerror="this.style.display='none'">
+                    
+                    <div class="chat-bubble">
+                        <div class="avatar">✨</div>
+                        <div class="chat-text">
+                            <strong>AIアシスタント</strong>
+                            <span class="nowrap">棚やかごの中身を</span><wbr><span class="nowrap">パシャッと</span><wbr><span class="nowrap">撮ってみてください！</span><br>
+                            <span class="nowrap">私が全部リストと</span><wbr><span class="nowrap">収納候補を作りますね。</span>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <section class="cta reveal">
-                <div class="container">
-                    <div class="cta-box">
-                        <span class="section-label">iPhone / Android 対応</span>
-                        <h2>撮るだけ登録から始めて、<br>片付けの面倒を減らしましょう。</h2>
-                        <p>画像解析、収納場所レコメンド、あいまい検索、場所タグ情報の最新化で、片付けを続けやすい運用に変えられます。</p>
-                        <div class="cta-row">
-                            <a href="/install/" class="button button-primary">アプリをインストール</a>
-                            <a href="privacy_policy.html" class="button button-secondary">プライバシーポリシー</a>
+                    
+                    <div class="chat-bubble right">
+                        <div class="avatar user">👤</div>
+                        <div class="chat-text">
+                            <strong>あなた</strong>
+                            「このネジ、どこにしまえばいいかな…」
                         </div>
                     </div>
-                </div>
-            </section>
-        </main>
-        <footer>
-            <div class="container footer-inner">
-                <p>&copy; 2026 スマート片付け. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="/install/">インストール</a>
-                    <a href="terms_of_service.html">利用規約</a>
-                    <a href="privacy_policy.html">プライバシーポリシー</a>
                 </div>
             </div>
-        </footer>
-        <script>
-        const revealElements = document.querySelectorAll('.reveal');
+        </section>
 
-        const revealOnScroll = () => {
-            const windowHeight = window.innerHeight;
-            revealElements.forEach((element) => {
-                const top = element.getBoundingClientRect().top;
-                if (top < windowHeight - 120) {
-                    element.classList.add('active');
-                }
-            });
-        };
+        <section id="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>
+                        <span class="nowrap">もう、自力でがんばらない。</span>
+                    </h2>
+                    <p>
+                        <span class="nowrap">お片付けの「面倒」や「迷い」を、</span><wbr><span class="nowrap">AIがそっとサポートします。</span>
+                    </p>
+                </div>
 
-        window.addEventListener('scroll', revealOnScroll);
-        window.addEventListener('load', revealOnScroll);
-        setTimeout(revealOnScroll, 120);
-        </script>
-    </body>
+                <div class="feature-grid">
+                    <div class="feature-row">
+                        <div class="phone-mockup">
+                            <img src="sceenshot/1.jpg" alt="画像解析">
+                        </div>
+                        <div class="feature-content">
+                            <h3><span class="nowrap">1. 撮るだけでリスト化</span> <span>AI解析</span></h3>
+                            <p>
+                                <span class="nowrap">棚や箱の中身を</span><wbr><span class="nowrap">パシャッと撮影するだけ。</span><wbr><span class="nowrap">写っているアイテムを</span><wbr><span class="nowrap">AIが全自動で候補にしてくれるので、</span><wbr><span class="nowrap">ちまちま入力する手間がなくなります。</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="phone-mockup">
+                            <img src="sceenshot/2.jpg" alt="収納提案">
+                        </div>
+                        <div class="feature-content">
+                            <h3><span class="nowrap">2. しまう場所を迷わない</span> <span class="pink-badge">AI提案</span></h3>
+                            <p>
+                                <span class="nowrap">「この電池、</span><wbr><span class="nowrap">どこに置くのが正解？」迷った時は</span><wbr><span class="nowrap">AIにおまかせ。</span><wbr><span class="nowrap">カテゴリや使うシーンに合わせて、</span><wbr><span class="nowrap">あなたにぴったりの収納場所を</span><wbr><span class="nowrap">提案します。</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="phone-mockup">
+                            <img src="sceenshot/3.jpg" alt="あいまい検索">
+                        </div>
+                        <div class="feature-content">
+                            <h3><span class="nowrap">3. うろ覚えでも</span><wbr><span class="nowrap">すぐ見つかる</span> <span>賢く検索</span></h3>
+                            <p>
+                                <span class="nowrap">「あれ、</span><wbr><span class="nowrap">なんて登録したっけ…？」思い出せない時でも</span><wbr><span class="nowrap">大丈夫。</span><wbr><span class="nowrap">似た言葉で検索すれば、</span><wbr><span class="nowrap">AIが意図を汲み取って探し出してくれます。</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="phone-mockup">
+                            <img src="sceenshot/4.jpg" alt="最新化">
+                        </div>
+                        <div class="feature-content">
+                            <h3><span class="nowrap">4. 出したあともワンタップ</span> <span class="pink-badge">カンタン更新</span></h3>
+                            <p>
+                                <span class="nowrap">物を取り出したら、</span><wbr><span class="nowrap">アプリをサッと開いて</span><wbr><span class="nowrap">ステータスを更新。</span><wbr><span class="nowrap">いつも最新の状態をカンタンに保てるから、</span><wbr><span class="nowrap">探し物のストレスがもうありません。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="voice-section">
+                <div class="voice-message">
+                    <span class="nowrap">「登録が面倒」</span><span class="nowrap">「どこにしまうか分からない」</span><wbr><span class="nowrap">「探しても出てこない」</span><br>
+                    <span class="nowrap">そんなお片付けのハードルを、</span><wbr><span class="nowrap">私たちがなくします。</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>
+                    <span class="nowrap">さあ、心地よいお部屋を</span><br class="pc-only"><span class="nowrap">手に入れましょう。</span>
+                </h2>
+                <div style="margin-top: 40px;">
+                    <a href="install/index.html" class="btn-large">アプリをインストール</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <a href="install/index.html">インストール</a>
+            <a href="terms_of_service.html">利用規約</a>
+            <a href="privacy_policy.html">プライバシーポリシー</a>
+            <p style="margin-top: 24px;">&copy; 2026 スマート片付け. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
 </html>
